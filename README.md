@@ -15,9 +15,6 @@
 
 ## Requirements
 
-- poetry
-- python ^3.11
-
 ## Stack
 
 - backend server: [Pocketbase](https://pocketbase.io/)
