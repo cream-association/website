@@ -13,6 +13,8 @@ import (
 	"github.com/pocketbase/pocketbase/daos"
 	"github.com/pocketbase/pocketbase/plugins/migratecmd"
 	"github.com/pocketbase/pocketbase/tools/mailer"
+
+	_ "backend/migrations" // keep this to auto load migrations on serve
 )
 
 func main() {
