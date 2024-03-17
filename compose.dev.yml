@@ -1,0 +1,13 @@
+version: "3"
+
+services:
+  backend:
+    build:
+      context: backend
+      dockerfile: Dockerfile.dev
+
+    volumes:
+      - "./backend/migrations:/pb/migrations"
+
+    ports:
+      - "8080:8080"
