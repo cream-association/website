@@ -7,7 +7,18 @@ services:
       dockerfile: Dockerfile.dev
 
     volumes:
-      - "./backend/migrations:/pb/migrations"
+      - "./backend:/pb"
 
     ports:
       - "8080:8080"
+
+  frontend:
+    build:
+      context: frontend
+      dockerfile: Dockerfile.dev
+
+    volumes:
+      - "./frontend:/srv/frontend"
+
+    ports:
+      - "3000:3000"
