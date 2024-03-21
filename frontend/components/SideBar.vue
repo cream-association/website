@@ -3,15 +3,6 @@ import { Cross1Icon } from "@radix-icons/vue";
 
 const drawerStore = useDrawerStore();
 const { isMobile } = useDisplay();
-const width = ref("16rem");
-
-drawerStore.$subscribe((mutation, state) => {
-  if (mutation.storeId != "drawer") {
-    return;
-  }
-
-  width.value = state.isOpen ? "16rem" : "0rem";
-});
 
 onMounted(() => {
   drawerStore.isOpen = !isMobile();
@@ -20,25 +11,29 @@ onMounted(() => {
 
 <template>
   <div class="drawer" v-show="drawerStore.isOpen">
-    <Button
-      variant="outline"
-      size="icon"
-      class="layout__header-drawer-btn"
-      @click="drawerStore.toggleDrawer()"
-      v-show="drawerStore.isOpen"
-      v-if="isMobile()"
-    >
-      <Cross1Icon class="layout__header-drawer-icon" />
-    </Button>
+    <div class="drawer__top">
+      <div class="drawer__logo"></div>
+      <Button
+        variant="outline"
+        size="icon"
+        class="-drawer__close-btn"
+        @click="drawerStore.toggleDrawer()"
+        v-show="drawerStore.isOpen"
+        v-if="isMobile()"
+      >
+        <Cross1Icon class="drawer__close-btn-icon" />
+      </Button>
+    </div>
+    <nav class="drawer__nav"></nav>
+    <footer class="drawer__footer"></footer>
   </div>
 </template>
 
 <style scoped>
 .drawer {
-  @apply bg-card h-dvh;
-  width: v-bind(width);
+  @apply bg-card h-dvh w-64;
 }
-.layout__header-drawer-btn {
+.drawer__close-btn {
   @apply bg-card m-4 relative left-48;
 }
 </style>
