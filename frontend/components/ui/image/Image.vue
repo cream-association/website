@@ -24,10 +24,10 @@ const props = withDefaults(
 
 <style scoped>
 .image__wrapper {
-  @apply relative w-full h-auto;
+  @apply relative w-full h-full;
 }
 .image__item {
-  @apply w-full h-auto;
+  @apply w-full h-full;
 }
 .image__loading-skeleton {
   @apply absolute inset-0 z-10;
