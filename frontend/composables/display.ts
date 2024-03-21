@@ -6,6 +6,7 @@ interface DisplayState {
   isTablet: () => boolean;
   isPortrait: () => boolean;
   isLandscape: () => boolean;
+  isTabletOrMobile: () => boolean;
 }
 
 export function useDisplay(ctxHasSetup: boolean = true): DisplayState {
@@ -40,8 +41,9 @@ export function useDisplay(ctxHasSetup: boolean = true): DisplayState {
 
   const isMobile = () => width.value <= 768;
   const isTablet = () => width.value > 768 && width.value <= 1024;
+  const isTabletOrMobile = () => isMobile() || isTablet();
   const isPortrait = () => height.value > width.value;
   const isLandscape = () => width.value > height.value;
 
-  return { isMobile, isTablet, isPortrait, isLandscape };
+  return { isMobile, isTablet, isPortrait, isLandscape, isTabletOrMobile };
 }

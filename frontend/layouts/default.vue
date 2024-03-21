@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { HamburgerMenuIcon } from "@radix-icons/vue";
 
-const { isMobile } = useDisplay();
+const { isTabletOrMobile } = useDisplay();
 const drawerStore = useDrawerStore();
 
-watch(isMobile, (newState) => {
+watch(isTabletOrMobile, (newState) => {
   drawerStore.$patch({
     isOpen: !newState,
   });
@@ -18,7 +18,8 @@ watch(isMobile, (newState) => {
       <aside
         :class="{
           layout__sidebar: true,
-          'layout__sidebar-mobile-open': isMobile() && drawerStore.isOpen,
+          'layout__sidebar-mobile-open':
+            isTabletOrMobile() && drawerStore.isOpen,
         }"
       >
         <Transition name="slide" mode="out-in">
@@ -30,7 +31,7 @@ watch(isMobile, (newState) => {
     <div class="layout__content-wrapper">
       <ClientOnly>
         <!-- header only on mobile -->
-        <header class="layout__header" v-if="isMobile()">
+        <header class="layout__header" v-if="isTabletOrMobile()">
           <Button
             variant="outline"
             size="icon"

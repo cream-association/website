@@ -2,15 +2,15 @@ import { defineStore } from "pinia";
 
 export const useDrawerStore = defineStore("drawer", {
   state: () => {
-    const { isMobile } = useDisplay(false);
+    const { isTabletOrMobile } = useDisplay(false);
     return {
-      isOpen: !isMobile(),
+      isOpen: !isTabletOrMobile(),
     };
   },
 
   actions: {
     toggleDrawer() {
-      if (!useDisplay(false).isMobile()) {
+      if (!useDisplay(false).isTabletOrMobile()) {
         this.isOpen = true;
         return;
       }
