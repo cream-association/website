@@ -24,7 +24,7 @@ export default defineNuxtPlugin((nuxtApp) => {
           setTimeout(() => {
             imgLoadingSkeleton.classList.add(HIDDEN_CLASSNAME);
             imgEl.classList.remove(HIDDEN_CLASSNAME);
-          }, 1000);
+          }, 100);
         });
 
         imgEl.addEventListener("error", () => {
