@@ -46,7 +46,7 @@ onMounted(() => {
 
     <Drawer v-if="isTabletOrMobile()" v-model:open="isOpen">
       <DrawerTrigger as-child>
-        <Button variant="outline" class="w-full">
+        <Button variant="outline" class="w-full bg-card capitalize">
           {{ selectedLocale }}
         </Button>
       </DrawerTrigger>
@@ -59,7 +59,7 @@ onMounted(() => {
 
     <Popover v-else v-model:open="isOpen">
       <PopoverTrigger as-child>
-        <Button variant="outline" class="w-full">
+        <Button variant="outline" class="w-full bg-card capitalize">
           {{ selectedLocale }}
         </Button>
       </PopoverTrigger>
