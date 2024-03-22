@@ -23,6 +23,9 @@ export default defineNuxtConfig({
   },
   colorMode: {
     classSuffix: "",
+    storageKey: "theme",
+    preference: "system",
+    fallback: "dark",
   },
   i18n: {
     defaultLocale: "fr",
