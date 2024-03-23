@@ -3,9 +3,12 @@ import { Cross1Icon } from "@radix-icons/vue";
 
 import Logo from "~/assets/images/logo.svg";
 
-const drawerStore = useDrawerStore();
 const { isTabletOrMobile } = useDisplay();
+const { locale } = useI18n();
+const switchLocalPath = useLocalePath();
+const drawerStore = useDrawerStore();
 const sidebar = ref<HTMLElement | null>();
+const isCollapsibleOpen = ref(false);
 
 onClickOutside(sidebar, (_event) => {
   if (isTabletOrMobile()) {
@@ -22,7 +25,12 @@ onMounted(() => {
   <div class="drawer" v-show="drawerStore.isOpen" ref="sidebar">
     <div class="drawer__top">
       <div class="drawer__logo">
-        <Image :source="Logo" alt-text="application logo" />
+        <a
+          @click="navigateTo(switchLocalPath('/', locale))"
+          class="drawer__anchor"
+        >
+          <Image :source="Logo" alt-text="application logo" />
+        </a>
       </div>
       <Button
         variant="outline"
@@ -35,7 +43,36 @@ onMounted(() => {
         <Cross1Icon class="drawer__close-btn-icon" />
       </Button>
     </div>
-    <nav class="drawer__nav"></nav>
+    <nav class="drawer__nav">
+      <NuxtLinkLocale
+        activeClass="drawer__nav-item-active"
+        class="drawer__nav-item"
+        to="/"
+      >
+        {{ $t("navigation.home") }}
+      </NuxtLinkLocale>
+      <NuxtLinkLocale
+        activeClass="drawer__nav-item-active"
+        class="drawer__nav-item"
+        to="/about"
+      >
+        {{ $t("navigation.about") }}
+      </NuxtLinkLocale>
+      <NuxtLinkLocale
+        activeClass="drawer__nav-item-active"
+        class="drawer__nav-item"
+        to="/blog"
+      >
+        {{ $t("navigation.blog") }}
+      </NuxtLinkLocale>
+      <NuxtLinkLocale
+        activeClass="drawer__nav-item-active"
+        class="drawer__nav-item"
+        to="/gallery"
+      >
+        {{ $t("navigation.gallery") }}
+      </NuxtLinkLocale>
+    </nav>
     <footer class="drawer__footer gap-2">
       <I18nCombo />
       <ThemeCombo />
@@ -47,11 +84,17 @@ onMounted(() => {
 .drawer {
   @apply bg-card h-dvh w-64 flex flex-col p-4;
 }
+
 .drawer__close-btn {
   @apply bg-card relative left-4 -top-8;
 }
+
 .drawer__top {
   @apply flex justify-between items-center p-4;
+}
+
+.drawer__anchor {
+  @apply h-full flex cursor-pointer rounded-md;
 }
 
 .drawer__logo {
@@ -59,7 +102,15 @@ onMounted(() => {
 }
 
 .drawer__nav {
-  @apply flex-grow flex flex-col items-center;
+  @apply flex-grow flex flex-col items-center justify-center gap-4;
+}
+
+.drawer__nav-item {
+  @apply w-10/12 text-start p-2 pl-4 text-muted-foreground font-black text-xl rounded-sm;
+}
+
+.drawer__nav-item-active {
+  @apply bg-primary text-primary-foreground;
 }
 
 .drawer__footer {
