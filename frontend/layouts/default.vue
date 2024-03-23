@@ -84,7 +84,7 @@ watch(isTabletOrMobile, (newState) => {
 }
 
 .layout__content-wrapper {
-  @apply flex-1 flex flex-col;
+  @apply flex-1 flex flex-col overflow-auto;
 }
 
 .layout__header {
