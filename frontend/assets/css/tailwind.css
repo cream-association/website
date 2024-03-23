@@ -32,17 +32,8 @@
 
     --foreground: var(--text);
 
-    --muted: 210 40% 96.1%;
+    --muted: var(--background-500);
     --muted-foreground: var(--text-500);
-
-    --popover: 0 0% 100%;
-    --popover-foreground: var(--text);
-
-    --card: 0 0% 93%;
-    --card-foreground: var(--text);
-
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
 
     --primary: 45 44% 51%;
     --primary-50: 44 44% 95%;
@@ -57,7 +48,7 @@
     --primary-900: 44 45% 10%;
     --primary-950: 49 44% 5%;
 
-    --primary-foreground: var(--text);
+    --primary-foreground: 0 0% 4%;
 
     --secondary: 39 54% 34%;
     --secondary-50: 39 54% 95%;
@@ -92,9 +83,18 @@
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
 
+    --popover: var(--primary-600);
+    --popover-foreground: var(--primary-foreground);
+
+    --card: 0 0% 93%;
+    --card-foreground: var(--text);
+
+    --border: var(--primary);
+    --input: 214.3 31.8% 91.4%;
+
     --drawer: var(--primary-950);
 
-    --ring: 222.2 84% 4.9%;
+    --ring: var(--primary);
 
     --radius: 0.5rem;
   }
@@ -128,17 +128,8 @@
 
     --foreground: var(--text);
 
-    --muted: 217.2 32.6% 17.5%;
+    --muted: var(--background-600);
     --muted-foreground: var(--text-600);
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: var(--text);
-
-    --card: 0 0% 7%;
-    --card-foreground: var(--text);
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
 
     --primary: 45 44% 51%;
     --primary-50: 44 44% 95%;
@@ -168,9 +159,9 @@
     --secondary-900: 40 53% 10%;
     --secondary-950: 39 54% 5%;
 
-    --secondary-foreground: var(--text);
+    --secondary-foreground: 0 0% 4%;
 
-    --accent: 225 44% 51%;
+    --accent: var(--primary-400);
     --accent-50: 224 44% 5%;
     --accent-100: 224 45% 10%;
     --accent-200: 225 43% 20%;
@@ -183,10 +174,19 @@
     --accent-900: 224 45% 90%;
     --accent-950: 229 44% 95%;
 
-    --accent-foreground: var(--text);
+    --accent-foreground: 0 0% 4%;
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: var(--text);
+
+    --popover: var(--primary-600);
+    --popover-foreground: var(--primary-foreground);
+
+    --card: 0 0% 7%;
+    --card-foreground: var(--text);
+
+    --border: var(--primary);
+    --input: 217.2 32.6% 17.5%;
 
     --drawer: var(--primary-950);
     --ring: 212.7 26.8% 83.9%;
@@ -197,6 +197,7 @@
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
   }
