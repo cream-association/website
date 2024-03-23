@@ -20,7 +20,10 @@ const updateTheme = (theme: string) => {
   <div class="theme__combo">
     <UseTemplate>
       <Command>
-        <CommandInput :placeholder="t('inputPlaceholder')" />
+        <CommandInput
+          class="text-popover-foreground !placeholder-popover-foreground"
+          :placeholder="t('inputPlaceholder')"
+        />
         <CommandList dismissable>
           <CommandEmpty>{{ t("emptyMessage") }}</CommandEmpty>
           <CommandGroup>
@@ -29,7 +32,7 @@ const updateTheme = (theme: string) => {
               :key="theme"
               :value="theme"
               @select="updateTheme(theme)"
-              class="capitalize"
+              class="capitalize text-popover-foreground"
             >
               {{ t(`themes.${theme}`) }}
             </CommandItem>
