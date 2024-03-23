@@ -65,7 +65,7 @@
 
     --secondary-foreground: var(--text);
 
-    --accent: 225 44% 51%;
+    --accent: var(--primary-400);
     --accent-50: 229 44% 95%;
     --accent-100: 224 45% 90%;
     --accent-200: 225 43% 80%;
@@ -90,7 +90,7 @@
     --card-foreground: var(--text);
 
     --border: var(--primary);
-    --input: 214.3 31.8% 91.4%;
+    --input: var(--primary);
 
     --drawer: var(--primary-950);
 
@@ -186,7 +186,7 @@
     --card-foreground: var(--text);
 
     --border: var(--primary);
-    --input: 217.2 32.6% 17.5%;
+    --input: var(--primary);
 
     --drawer: var(--primary-950);
     --ring: 212.7 26.8% 83.9%;
