@@ -9,33 +9,46 @@ const switchLocalePath = useLocalePath();
 const route = useRoute();
 
 const isOpen = ref(false);
-const selectedLocale = ref<string>("");
+const selectedLocale = ref<LocaleObject>();
+const searchTerm = ref("");
 
 const onLocaleSelected = async (locale: LocaleObject) => {
-  selectedLocale.value = locale.name || "";
+  selectedLocale.value = locale;
   await navigateTo(switchLocalePath(route, locale.code));
   isOpen.value = false;
 };
 
+const filteredLocales = computed(() =>
+  searchTerm.value === ""
+    ? locales.value
+    : locales.value.filter((l) =>
+        l.name?.toLowerCase().includes(searchTerm.value.toLowerCase())
+      )
+);
+
 onMounted(() => {
   const lObject = locales.value.find((l) => l.code === locale.value);
-  selectedLocale.value = lObject?.name || "";
+  selectedLocale.value = lObject || locales.value[0];
 });
 </script>
 
 <template>
   <div class="i18n__combo">
     <UseTemplate>
-      <Command>
-        <CommandInput :placeholder="t('inputPlaceholder')" />
+      <Command v-model:search-term="searchTerm">
+        <CommandInput
+          class="text-popover-foreground !placeholder-popover-foreground"
+          :placeholder="t('inputPlaceholder')"
+        />
         <CommandList dismissable>
           <CommandEmpty>{{ t("emptyMessage") }}</CommandEmpty>
           <CommandGroup>
             <CommandItem
-              v-for="lc of locales"
+              v-for="lc of filteredLocales"
               :key="lc.code"
-              :value="lc.code"
+              :value="lc"
               @select="onLocaleSelected(lc)"
+              class="!text-popover-foreground hover:bg-primary"
             >
               {{ lc.name }}
             </CommandItem>
@@ -47,7 +60,7 @@ onMounted(() => {
     <Drawer v-if="isTabletOrMobile()" v-model:open="isOpen">
       <DrawerTrigger as-child>
         <Button variant="outline" class="w-full bg-card capitalize">
-          {{ selectedLocale }}
+          {{ selectedLocale?.name }}
         </Button>
       </DrawerTrigger>
       <DrawerContent>
@@ -60,7 +73,7 @@ onMounted(() => {
     <Popover v-else v-model:open="isOpen">
       <PopoverTrigger as-child>
         <Button variant="outline" class="w-full bg-card capitalize">
-          {{ selectedLocale }}
+          {{ selectedLocale?.name }}
         </Button>
       </PopoverTrigger>
       <PopoverContent class="w-full p-0" align="start" side="top">
