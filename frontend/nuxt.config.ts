@@ -10,9 +10,9 @@ export default defineNuxtConfig({
     "@nuxtjs/i18n",
     "@nuxtjs/color-mode",
     "@pinia/nuxt",
-    "@formkit/auto-animate/nuxt",
     "@vueuse/nuxt",
     "@nuxtjs/seo",
+    "@hypernym/nuxt-gsap",
   ],
   pinia: {
     storesDirs: ["./stores/**"],
