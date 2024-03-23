@@ -23,7 +23,6 @@
     "vue-router": "^4.3.0"
   },
   "devDependencies": {
-    "@hypernym/nuxt-gsap": "^2.4.2",
     "@iconify-json/radix-icons": "^1.1.14",
     "@iconify/vue": "^4.1.1",
     "@nuxtjs/color-mode": "^3.3.2",
@@ -32,7 +31,7 @@
     "@nuxtjs/tailwindcss": "^6.11.4",
     "@vueuse/core": "^10.9.0",
     "@vueuse/nuxt": "^10.9.0",
-    "nuxt": "^3.11.0",
+    "nuxt": "^3.11.1",
     "shadcn-nuxt": "^0.10.2",
     "typescript": "^5.4.2"
   }

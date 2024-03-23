@@ -12,7 +12,6 @@ export default defineNuxtConfig({
     "@pinia/nuxt",
     "@vueuse/nuxt",
     "@nuxtjs/seo",
-    "@hypernym/nuxt-gsap",
   ],
   pinia: {
     storesDirs: ["./stores/**"],
