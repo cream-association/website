@@ -8,7 +8,6 @@ const { locale } = useI18n();
 const switchLocalPath = useLocalePath();
 const drawerStore = useDrawerStore();
 const sidebar = ref<HTMLElement | null>();
-const isCollapsibleOpen = ref(false);
 
 onClickOutside(sidebar, (_event) => {
   if (isTabletOrMobile()) {
