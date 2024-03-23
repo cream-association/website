@@ -40,7 +40,7 @@ export function useDisplay(ctxHasSetup: boolean = true): DisplayState {
   }
 
   const isMobile = () => width.value <= 768;
-  const isTablet = () => width.value > 768 && width.value <= 1024;
+  const isTablet = () => width.value > 768 && width.value <= 1280;
   const isTabletOrMobile = () => isMobile() || isTablet();
   const isPortrait = () => height.value > width.value;
   const isLandscape = () => width.value > height.value;
