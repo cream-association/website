@@ -6,7 +6,11 @@ const smallBall = ref<HTMLElement | undefined>(undefined);
 const hoverables = ref<NodeListOf<HTMLElement> | undefined>(undefined);
 
 watch([x, y], ([newX, newY]) => {
-  if (bigBall.value === undefined || smallBall.value === undefined) {
+  if (
+    bigBall.value === undefined ||
+    smallBall.value === undefined ||
+    isTabletOrMobile()
+  ) {
     return;
   }
 
@@ -21,11 +25,17 @@ watch([x, y], ([newX, newY]) => {
 });
 
 const onMouseEnter = () => {
+  if (bigBall.value === undefined || isTabletOrMobile()) {
+    return;
+  }
   useGsap.to(bigBall.value, 0.3, {
     scale: 3,
   });
 };
 const onMouseLeave = () => {
+  if (bigBall.value === undefined || isTabletOrMobile()) {
+    return;
+  }
   useGsap.to(bigBall.value, 0.3, {
     scale: 1,
   });

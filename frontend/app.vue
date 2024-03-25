@@ -23,7 +23,9 @@
 }
 </style>
 <style>
-* {
-  cursor: none !important;
+@media (min-width: 1280px) {
+  * {
+    cursor: none !important;
+  }
 }
 </style>
