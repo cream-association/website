@@ -14,6 +14,12 @@ export default defineNuxtConfig({
     "@nuxtjs/seo",
     "@hypernym/nuxt-gsap",
   ],
+  app: {
+    pageTransition: {
+      name: "page",
+      mode: "out-in",
+    },
+  },
   pinia: {
     storesDirs: ["./stores/**"],
   },

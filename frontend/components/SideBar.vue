@@ -105,7 +105,7 @@ onMounted(() => {
 }
 
 .drawer__nav-item {
-  @apply w-10/12 text-start p-2 pl-4 text-muted-foreground font-black text-xl rounded-sm;
+  @apply w-10/12 text-start p-2 pl-4 text-muted-foreground font-black text-xl rounded-sm transition-colors duration-500 ease-in-out;
 }
 
 .drawer__nav-item-active {
