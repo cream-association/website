@@ -116,7 +116,7 @@ onMounted(() => {
   @apply flex flex-col items-center pb-4 content-between;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1280px) {
   .drawer__logo {
     @apply ml-8;
   }
