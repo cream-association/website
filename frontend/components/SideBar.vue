@@ -23,7 +23,7 @@ onMounted(() => {
 <template>
   <div class="drawer" v-show="drawerStore.isOpen" ref="sidebar">
     <div class="drawer__top">
-      <div class="drawer__logo">
+      <div class="drawer__logo hoverable">
         <a
           @click="navigateTo(switchLocalPath('/', locale))"
           class="drawer__anchor"
@@ -45,28 +45,28 @@ onMounted(() => {
     <nav class="drawer__nav">
       <NuxtLinkLocale
         activeClass="drawer__nav-item-active"
-        class="drawer__nav-item"
+        class="drawer__nav-item hoverable"
         to="/"
       >
         {{ $t("navigation.home") }}
       </NuxtLinkLocale>
       <NuxtLinkLocale
         activeClass="drawer__nav-item-active"
-        class="drawer__nav-item"
+        class="drawer__nav-item hoverable"
         to="/about"
       >
         {{ $t("navigation.about") }}
       </NuxtLinkLocale>
       <NuxtLinkLocale
         activeClass="drawer__nav-item-active"
-        class="drawer__nav-item"
+        class="drawer__nav-item hoverable"
         to="/blog"
       >
         {{ $t("navigation.blog") }}
       </NuxtLinkLocale>
       <NuxtLinkLocale
         activeClass="drawer__nav-item-active"
-        class="drawer__nav-item"
+        class="drawer__nav-item hoverable"
         to="/gallery"
       >
         {{ $t("navigation.gallery") }}

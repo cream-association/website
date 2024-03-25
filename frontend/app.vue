@@ -1,5 +1,8 @@
 <template>
   <div class="app">
+    <ClientOnly>
+      <Cursor />
+    </ClientOnly>
     <nuxt-layout>
       <template #drawer>
         <SideBar />
@@ -17,5 +20,10 @@
 <style scoped>
 .app {
   @apply bg-background;
+}
+</style>
+<style>
+* {
+  cursor: none !important;
 }
 </style>
