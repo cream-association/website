@@ -17,9 +17,15 @@ dependencies:
   clsx:
     specifier: ^2.1.0
     version: 2.1.0
+  nuxt-swiper:
+    specifier: ^1.2.2
+    version: 1.2.2(rollup@4.13.0)
   pinia:
     specifier: ^2.1.7
     version: 2.1.7(typescript@5.4.3)(vue@3.4.21)
+  pocketbase:
+    specifier: ^0.21.1
+    version: 0.21.1
   radix-vue:
     specifier: ^1.5.2
     version: 1.5.3(vue@3.4.21)
@@ -6856,6 +6862,16 @@ packages:
       - webpack
     dev: true
 
+  /nuxt-swiper@1.2.2(rollup@4.13.0):
+    resolution: {integrity: sha512-y4s/srISP4OuhXbYg9/W1/6EWnbcoHRGEKBKAvGP0I2h0b3enhqZNEk7854M3F89ys8waacBXektPzamgl5xwQ==}
+    dependencies:
+      '@nuxt/kit': 3.11.1(rollup@4.13.0)
+      swiper: 10.3.1
+    transitivePeerDependencies:
+      - rollup
+      - supports-color
+    dev: false
+
   /nuxt@3.11.1(@unocss/reset@0.58.6)(floating-vue@5.2.2)(rollup@4.13.0)(typescript@5.4.3)(unocss@0.58.6)(vite@5.2.4):
     resolution: {integrity: sha512-CsncE1dxP0cmOYT+PBdjMD0bOK8eZizG5tgNWUOJAAAtU45sO38maoBumYYL2kUpT/SC/dMP+831DAcVPvi9pQ==}
     engines: {node: ^14.18.0 || >=16.10.0}
@@ -7299,6 +7315,10 @@ packages:
     engines: {node: '>=16'}
     hasBin: true
     dev: true
+
+  /pocketbase@0.21.1:
+    resolution: {integrity: sha512-0PvCP4pKtxsV9kwldEGyibEvhwOcx9jSCrz3WN5CgPILJfM0z76f1op9WE8/8UgikDsMdRsc5iBLfKintrJS1g==}
+    dev: false
 
   /portfinder@1.0.32:
     resolution: {integrity: sha512-on2ZJVVDXRADWE6jnQaX0ioEylzgBpQk8r55NE4wjXW1ZxO+BgDlY6DXwj20i0V8eB4SenDQ00WEaxfiIQPcxg==}
@@ -8515,6 +8535,11 @@ packages:
       csso: 5.0.5
       picocolors: 1.0.0
     dev: true
+
+  /swiper@10.3.1:
+    resolution: {integrity: sha512-24Wk3YUdZHxjc9faID97GTu6xnLNia+adMt6qMTZG/HgdSUt4fS0REsGUXJOgpTED0Amh/j+gRGQxsLayJUlBQ==}
+    engines: {node: '>= 4.7.0'}
+    dev: false
 
   /system-architecture@0.1.0:
     resolution: {integrity: sha512-ulAk51I9UVUyJgxlv9M6lFot2WP3e7t8Kz9+IS6D4rVba1tR9kON+Ey69f+1R4Q8cd45Lod6a4IcJIxnzGc/zA==}
