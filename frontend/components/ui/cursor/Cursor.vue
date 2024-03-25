@@ -4,6 +4,7 @@ const { x, y } = useMouse();
 const bigBall = ref<HTMLElement | undefined>(undefined);
 const smallBall = ref<HTMLElement | undefined>(undefined);
 const hoverables = ref<NodeListOf<HTMLElement> | undefined>(undefined);
+const router = useRouter();
 
 watch([x, y], ([newX, newY]) => {
   if (
@@ -24,6 +25,16 @@ watch([x, y], ([newX, newY]) => {
   });
 });
 
+const updateHoverables = () => {
+  setTimeout(() => {
+    hoverables.value = document.body.querySelectorAll(".hoverable");
+
+    Array.from(hoverables.value).forEach((hoverable) => {
+      hoverable.addEventListener("mouseenter", onMouseEnter);
+      hoverable.addEventListener("mouseleave", onMouseLeave);
+    });
+  }, 750);
+};
 const onMouseEnter = () => {
   if (bigBall.value === undefined || isTabletOrMobile()) {
     return;
@@ -41,13 +52,12 @@ const onMouseLeave = () => {
   });
 };
 
-onMounted(() => {
-  hoverables.value = document.body.querySelectorAll(".hoverable");
+router.afterEach(() => {
+  updateHoverables();
+});
 
-  Array.from(hoverables.value).forEach((hoverable) => {
-    hoverable.addEventListener("mouseenter", onMouseEnter);
-    hoverable.addEventListener("mouseleave", onMouseLeave);
-  });
+onMounted(() => {
+  updateHoverables();
 });
 
 onUnmounted(() => {
