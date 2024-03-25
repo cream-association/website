@@ -1,5 +1,3 @@
-import pages from "./pages";
-
 export default {
   welcome: "Welcome to Cream !",
   nuxtSiteConfig: {
@@ -13,5 +11,4 @@ export default {
     gallery: "Gallery",
     about: "About us",
   },
-  pages,
 };
