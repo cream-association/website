@@ -32,6 +32,16 @@
   opacity: 0;
 }
 
+::-moz-selection {
+  background-color: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
+}
+
+::selection {
+  background-color: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
+}
+
 @media (min-width: 1280px) {
   * {
     cursor: none !important;
