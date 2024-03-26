@@ -43,11 +43,15 @@ const {
       <h2 class="home__sponsors-title">{{ $t("pages.home.sponsorsTitle") }}</h2>
       <div class="home__sponsors-wrapper">
         <a
-          class="home__sponsors-item grayscale brightness-50 hoverable"
+          class="home__sponsors-item hoverable"
           href="https://cfa-insta.fr/"
           target="_blank"
         >
-          <Image :source="CFALogo" alt-text="CFA INSTA logo" />
+          <Image
+            class="grayscale brightness-50"
+            :source="CFALogo"
+            alt-text="CFA INSTA logo"
+          />
         </a>
         <NuxtLinkLocale
           to="/contact"
