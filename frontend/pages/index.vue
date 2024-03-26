@@ -1,6 +1,8 @@
 <script setup lang="ts">
+import { EnvelopeOpenIcon, CaretRightIcon } from "@radix-icons/vue";
+
 import Logo from "~/assets/images/logo.svg";
-import { EnvelopeOpenIcon } from "@radix-icons/vue";
+import CFALogo from "~/assets/images/sponsors/cfa_insta_logo.png";
 
 const {
   data: blogPostResponse,
@@ -11,7 +13,7 @@ const {
 
 <template>
   <div class="home">
-    <section class="home__header">
+    <section class="home__header" id="hero">
       <div class="home__header-content">
         <h1 class="home__header-content-title">{{ $t("title") }}</h1>
         <p class="home__header-content-subtitle">
@@ -35,6 +37,25 @@ const {
           alt-text="cream robotics logo gold color"
           class="home__header-logo-image"
         />
+      </div>
+    </section>
+    <section class="home__sponsors" id="sponsors">
+      <h2 class="home__sponsors-title">{{ $t("pages.home.sponsorsTitle") }}</h2>
+      <div class="home__sponsors-wrapper">
+        <a
+          class="home__sponsors-item grayscale brightness-50 hoverable"
+          href="https://cfa-insta.fr/"
+          target="_blank"
+        >
+          <Image :source="CFALogo" alt-text="CFA INSTA logo" />
+        </a>
+        <NuxtLinkLocale
+          to="/contact"
+          class="home__sponsors-item text-primary font-bold hoverable"
+        >
+          {{ $t("pages.home.sponsorsGetInTouch") }}
+          <CaretRightIcon class="w-16 h-16" />
+        </NuxtLinkLocale>
       </div>
     </section>
   </div>
@@ -67,5 +88,17 @@ const {
 }
 .home__header-logo-image {
   @apply max-w-full h-auto block;
+}
+.home__sponsors {
+  @apply py-8 mx-auto max-w-screen-xl px-4 lg:py-16;
+}
+.home__sponsors-title {
+  @apply mb-8 lg:mb-16 text-3xl font-extrabold tracking-tight leading-tight text-center text-foreground md:text-4xl;
+}
+.home__sponsors-wrapper {
+  @apply grid grid-cols-2 gap-8 text-foreground sm:gap-12 md:grid-cols-3 lg:grid-cols-6;
+}
+.home__sponsors-item {
+  @apply flex justify-center items-center;
 }
 </style>
