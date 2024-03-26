@@ -3,4 +3,6 @@ export default {
   blogTitle: "Last news",
   contactBtn: "Contact us !",
   mailInput: "Your e-mail address",
+  sponsorsTitle: "They trust us",
+  sponsorsGetInTouch: "Get in touch to sponsor us!",
 };
