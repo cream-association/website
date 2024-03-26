@@ -20,6 +20,11 @@ export default defineNuxtConfig({
       mode: "out-in",
     },
   },
+  runtimeConfig: {
+    public: {
+      pocketBaseUrl: "",
+    },
+  },
   pinia: {
     storesDirs: ["./stores/**"],
   },
