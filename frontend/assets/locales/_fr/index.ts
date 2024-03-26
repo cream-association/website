@@ -5,7 +5,7 @@ export default {
     name: "Cream",
     description: "Cream est une association de robotique basée à Paris.",
   },
-  title: "Cream",
+  title: "Cream Robotique",
   navigation: {
     home: "Accueil",
     blog: "Blog",

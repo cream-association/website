@@ -4,7 +4,7 @@ export default {
     name: "Cream",
     description: "Cream is a robotics association based in Paris",
   },
-  title: "Cream",
+  title: "Cream Robotics",
   navigation: {
     home: "Home",
     blog: "Blog",
