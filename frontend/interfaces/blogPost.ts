@@ -1,3 +1,4 @@
+import type { StringLiteral } from "typescript";
 import type { BaseResponse } from "./apiResponse";
 
 export interface BlogCollection {
@@ -33,6 +34,8 @@ export interface BlogPost {
   updated: Date;
   title_fr: string;
   title_en: string;
+  description_fr: string;
+  description_en: string;
   slug_fr: string;
   slug_en: string;
   header_text_fr: string;
