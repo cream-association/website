@@ -1,7 +1,13 @@
 <script setup lang="ts">
 import Logo from "~/assets/images/logo.svg";
 
+const dayjs = useDayjs();
+const { locale } = useI18n();
 const loaded = ref(false);
+
+watch(locale, (newLocale) => {
+  dayjs.locale(newLocale);
+});
 
 onMounted(() => {
   loaded.value = true;
