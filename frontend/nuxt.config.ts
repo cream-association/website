@@ -13,6 +13,8 @@ export default defineNuxtConfig({
     "@vueuse/nuxt",
     "@nuxtjs/seo",
     "@hypernym/nuxt-gsap",
+    "nuxt-swiper",
+    "dayjs-nuxt",
   ],
   app: {
     pageTransition: {
@@ -23,10 +25,16 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       pocketBaseUrl: "",
+      pocketBaseFileUrl: "",
     },
   },
   pinia: {
     storesDirs: ["./stores/**"],
+  },
+  dayjs: {
+    locales: ["en", "fr"],
+    defaultLocale: "fr",
+    plugins: ["localizedFormat"],
   },
   gsap: {
     composables: true,
