@@ -96,6 +96,10 @@
 
     --ring: var(--primary);
 
+    --swiper-theme-color: #866528 !important;
+    --swiper-pagination-bullet-inactive-color: #866528CC;
+    --swiper-pagination-top: 96% !important;
+
     --radius: 0.5rem;
   }
 
