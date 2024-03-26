@@ -25,15 +25,8 @@ onMounted(() => {
     </nuxt-layout>
   </div>
   <div v-show="!loaded" class="loader">
-    <img
-      :src="Logo"
-      alt="cream association logo"
-      class="loader__logo"
-    ></img>
-    <div class="loader__titles">
-      <h1 class="loader__title">{{ $t("title") }}</h1>
-      <Spinner class="loader__spinner" />
-    </div>
+    <img :src="Logo" alt="cream association logo" class="loader__logo" />
+    <Spinner class="loader__spinner" />
   </div>
 </template>
 
@@ -41,26 +34,16 @@ onMounted(() => {
 .app {
   @apply bg-background;
 }
-.loader{
-  @apply h-dvh flex-col flex items-center xl:flex-row justify-center;
+.loader {
+  @apply h-dvh flex flex-col items-center justify-center;
 }
 
 .loader__logo {
   @apply aspect-auto h-56 xl:h-72 xl:mb-4;
 }
 
-.loader__titles {
-  @apply text-center xl:text-left;
-}
-
-.loader__title {
-  @apply text-6xl xl:text-9xl font-black tracking-widest uppercase;
-}
-.loader__subtitle {
-  @apply text-lg xl:text-xl font-bold tracking-wide uppercase mt-4;
-}
 .loader__spinner {
-  @apply mt-16 ml-[45%];
+  @apply mt-8;
 }
 </style>
 <style>
