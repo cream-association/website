@@ -5,8 +5,6 @@ import PocketBase from "pocketbase";
 export default defineEventHandler<Promise<BlogPostResponse>>(
   async (): Promise<BlogPostResponse> => {
     const runtimeConfig = useRuntimeConfig();
-    console.log("toto");
-    console.log(runtimeConfig.public.pocketBaseUrl);
     const pb = new PocketBase(runtimeConfig.public.pocketBaseUrl);
 
     const blogPosts: BlogPostResponse = await pb
