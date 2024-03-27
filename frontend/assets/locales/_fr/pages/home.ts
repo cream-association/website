@@ -5,4 +5,5 @@ export default {
   mailInput: "Votre adresse e-mail",
   sponsorsTitle: "Ils nous font confiance",
   sponsorsGetInTouch: "Contactez-nous pour nous sponsoriser !",
+  readMoreButton: "Lire la suite",
 };
