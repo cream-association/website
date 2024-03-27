@@ -5,6 +5,7 @@ import { EnvelopeOpenIcon, CaretRightIcon } from "@radix-icons/vue";
 
 import Logo from "~/assets/images/logo.svg";
 import CFALogo from "~/assets/images/sponsors/cfa_insta_logo.png";
+import Robot from "~/assets/images/robot.png";
 
 const { isTabletOrMobile } = useDisplay();
 const runtimeConfig = useRuntimeConfig();
@@ -109,13 +110,13 @@ onMounted(() => {
             </Card>
           </SwiperSlide>
           <SwiperSlide
-            v-else
+            v-if="!pendingBlogPost && blogPosts.length > 0"
             v-for="blogPost in blogPosts"
             :key="blogPost.id"
             class="!w-auto"
           >
             <Card class="home__blog-posts-card">
-              <div class="home__blog-posts-card-image">
+              <div class="home__blog-posts-card-image hoverable">
                 <Image
                   :source="`${runtimeConfig.public.pocketBaseFileUrl}/${blogPost.collectionId}/${blogPost.id}/${blogPost.header_image}`"
                   alt-text="post header image"
@@ -162,11 +163,44 @@ onMounted(() => {
                 </p>
               </CardContent>
               <CardFooter class="pt-4 px-4 pb-6">
-                <Button>
-                  Read More
+                <Button class="hoverable">
+                  {{ $t("pages.home.readMoreButton") }}
                   <CaretRightIcon class="h-4 w-4 ml-2" />
                 </Button>
               </CardFooter>
+            </Card>
+          </SwiperSlide>
+          <SwiperSlide v-if="!pendingBlogPost && blogPostError" class="!w-auto">
+            <Card
+              class="bg-destructive min-h-64 flex items-center justify-center"
+            >
+              <CardContent
+                class="flex flex-col gap-4 items-center justify-center"
+              >
+                <p class="text-center">
+                  {{ $t("fetchError") }}
+                </p>
+                <p class="text-center">
+                  {{ blogPostError.message }}
+                </p>
+              </CardContent>
+            </Card>
+          </SwiperSlide>
+          <SwiperSlide
+            v-if="!pendingBlogPost && blogPosts.length === 0"
+            class="!w-auto"
+          >
+            <Card
+              class="bg-card h-64 max-w-96 flex items-center justify-center"
+            >
+              <CardContent
+                class="flex flex-col gap-4 items-center justify-center p-6"
+              >
+                <div class="home__blog-posts-card-image w-24">
+                  <Image :source="Robot" alt-text="robot" />
+                </div>
+                <p class="text-center font-semibold">{{ $t("noBlogPost") }}</p>
+              </CardContent>
             </Card>
           </SwiperSlide>
         </Swiper>

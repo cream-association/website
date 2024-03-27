@@ -11,4 +11,7 @@ export default {
     gallery: "Gallery",
     about: "About us",
   },
+  fetchError: "An error occurred during data fetch. Reason:",
+  noBlogPost:
+    "Bip-bop! Our robots are on a mission to unearth new items. Come back soon!",
 };

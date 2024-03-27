@@ -1,5 +1,3 @@
-import pages from "./pages";
-
 export default {
   nuxtSiteConfig: {
     name: "Cream",
@@ -12,5 +10,8 @@ export default {
     gallery: "Gallerie",
     about: "À Propos",
   },
-  pages,
+  fetchError:
+    "Une erreur s'est produite lors de la récupération des données. Raison :",
+  noBlogPost:
+    "Bip-bop ! Nos robots sont en mission pour dénicher de nouveaux articles. Revenez bientôt !",
 };
