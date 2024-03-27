@@ -61,7 +61,7 @@ watch(isTabletOrMobile, (newState) => {
 }
 
 .layout__sidebar {
-  @apply max-w-64;
+  @apply max-w-64 z-10;
 }
 
 .layout__sidebar-mobile-open {

@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import Logo from "~/assets/images/logo.svg";
 
-const dayjs = useDayjs();
 const { locale } = useI18n();
+const dayjs = useDayjs();
+const globalStore = useGlobalStore();
 const loaded = ref(false);
 
 watch(locale, (newLocale) => {
@@ -14,9 +15,13 @@ onMounted(() => {
 });
 </script>
 <template>
-  <div class="app" v-show="loaded">
+  <div
+    class="app"
+    v-show="loaded"
+    :data-custom-cursor="globalStore.useCustomCursor.toString()"
+  >
     <ClientOnly>
-      <Cursor />
+      <Cursor v-if="globalStore.useCustomCursor" />
     </ClientOnly>
     <nuxt-layout>
       <template #drawer>
@@ -73,7 +78,7 @@ onMounted(() => {
 }
 
 @media (min-width: 1280px) {
-  * {
+  [data-custom-cursor="true"] * {
     cursor: none !important;
   }
 }

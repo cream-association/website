@@ -31,7 +31,7 @@ onMounted(() => {
 
 <template>
   <div class="home">
-    <section class="home__header" id="hero">
+    <section class="home__header z-10" id="hero">
       <div class="home__header-content">
         <h1 class="home__header-content-title">{{ $t("title") }}</h1>
         <p class="home__header-content-subtitle">
@@ -43,7 +43,7 @@ onMounted(() => {
             type="email"
             :placeholder="$t('pages.home.mailInput')"
           />
-          <Button>
+          <Button class="hoverable">
             <EnvelopeOpenIcon class="w-4 h-4 mr-2" />
             {{ $t("pages.home.contactBtn") }}
           </Button>
@@ -57,7 +57,7 @@ onMounted(() => {
         />
       </div>
     </section>
-    <section class="home__sponsors" id="sponsors">
+    <section class="home__sponsors z-10" id="sponsors">
       <h2 class="home__sponsors-title">{{ $t("pages.home.sponsorsTitle") }}</h2>
       <div class="home__sponsors-wrapper">
         <a
@@ -80,7 +80,7 @@ onMounted(() => {
         </NuxtLinkLocale>
       </div>
     </section>
-    <section class="home__blog-posts" id="blog-posts">
+    <section class="home__blog-posts z-10" id="blog-posts">
       <h2 class="home__blog-posts-title">
         {{ $t("pages.home.blogTitle") }}
       </h2>
@@ -241,7 +241,7 @@ onMounted(() => {
   @apply py-8 mx-auto max-w-screen-xl px-4 lg:py-16;
 }
 .home__sponsors-title {
-  @apply mb-8 lg:mb-16 text-3xl font-extrabold tracking-tight leading-tight text-center text-foreground;
+  @apply mb-8 lg:mb-16 text-3xl font-extrabold tracking-tight leading-tight text-foreground;
 }
 .home__sponsors-wrapper {
   @apply grid grid-cols-2 gap-8 text-foreground sm:gap-12 md:grid-cols-3 lg:grid-cols-6;
@@ -253,7 +253,7 @@ onMounted(() => {
   @apply px-4 max-w-7xl w-full mx-auto mt-8;
 }
 .home__blog-posts-title {
-  @apply text-foreground font-bold text-3xl mb-8 text-center;
+  @apply text-foreground font-bold text-3xl mb-8;
 }
 .home__blog-posts-card {
   @apply min-h-48 w-72;

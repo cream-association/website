@@ -14,4 +14,5 @@ export default {
     "Une erreur s'est produite lors de la récupération des données. Raison :",
   noBlogPost:
     "Bip-bop ! Nos robots sont en mission pour dénicher de nouveaux articles. Revenez bientôt !",
+  disableCustomCursor: "Utiliser le curseur customisé.",
 };
