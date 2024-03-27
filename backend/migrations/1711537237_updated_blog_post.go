@@ -11,7 +11,7 @@ import (
 
 func init() {
 	m.Register(func(db dbx.Builder) error {
-		dao := daos.New(db)
+		dao := daos.New(db);
 
 		collection, err := dao.FindCollectionByNameOrId("8r6xt4ayzaytzve")
 		if err != nil {
@@ -22,7 +22,7 @@ func init() {
 		new_description_fr := &schema.SchemaField{}
 		if err := json.Unmarshal([]byte(`{
 			"system": false,
-			"id": "l2bma3u2",
+			"id": "shkx7elc",
 			"name": "description_fr",
 			"type": "text",
 			"required": true,
@@ -42,10 +42,10 @@ func init() {
 		new_description_en := &schema.SchemaField{}
 		if err := json.Unmarshal([]byte(`{
 			"system": false,
-			"id": "z1uomtca",
+			"id": "fc6q8uuo",
 			"name": "description_en",
 			"type": "text",
-			"required": true,
+			"required": false,
 			"presentable": false,
 			"unique": false,
 			"options": {
@@ -60,7 +60,7 @@ func init() {
 
 		return dao.SaveCollection(collection)
 	}, func(db dbx.Builder) error {
-		dao := daos.New(db)
+		dao := daos.New(db);
 
 		collection, err := dao.FindCollectionByNameOrId("8r6xt4ayzaytzve")
 		if err != nil {
@@ -68,10 +68,10 @@ func init() {
 		}
 
 		// remove
-		collection.Schema.RemoveField("l2bma3u2")
+		collection.Schema.RemoveField("shkx7elc")
 
 		// remove
-		collection.Schema.RemoveField("z1uomtca")
+		collection.Schema.RemoveField("fc6q8uuo")
 
 		return dao.SaveCollection(collection)
 	})
