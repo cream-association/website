@@ -1,11 +1,13 @@
 <script setup lang="ts">
 import { Cross1Icon } from "@radix-icons/vue";
+import { useStorage } from "@vueuse/core";
 
 import Logo from "~/assets/images/logo.svg";
 
 const { isTabletOrMobile } = useDisplay();
 const { locale } = useI18n();
 const switchLocalPath = useLocalePath();
+const customCursorLocalStorage = useStorage("custom-cursor", true);
 const drawerStore = useDrawerStore();
 const globalStore = useGlobalStore();
 const sidebar = ref<HTMLElement | null>();
@@ -16,8 +18,17 @@ onClickOutside(sidebar, (_event) => {
   }
 });
 
+globalStore.$subscribe((mutation, state) => {
+  if (mutation.storeId !== "global") {
+    return;
+  }
+
+  customCursorLocalStorage.value = state.useCustomCursor;
+});
+
 onMounted(() => {
   drawerStore.isOpen = !isTabletOrMobile();
+  globalStore.useCustomCursor = customCursorLocalStorage.value;
 });
 </script>
 
