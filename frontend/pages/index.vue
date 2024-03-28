@@ -215,7 +215,7 @@ onMounted(() => {
 }
 
 .home__header {
-  @apply rounded-md p-16 max-w-5xl grid mx-auto xl:gap-0 xl:w-4/5 lg:py-16 lg:gap-12 lg:grid-cols-12;
+  @apply rounded-md p-16 max-w-5xl grid mx-auto xl:gap-0 xl:w-4/5 lg:py-16 lg:gap-12 lg:grid-cols-12 md:h-[60dvh];
 }
 
 .home__header-content {
