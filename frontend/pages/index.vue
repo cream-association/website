@@ -187,7 +187,7 @@ onMounted(() => {
             </Card>
           </SwiperSlide>
           <SwiperSlide
-            v-if="!pendingBlogPost && blogPosts.length === 0"
+            v-if="!pendingBlogPost && blogPosts.length === 0 && !blogPostError"
             class="!w-auto"
           >
             <Card
