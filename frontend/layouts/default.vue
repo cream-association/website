@@ -100,6 +100,6 @@ watch(isTabletOrMobile, (newState) => {
 }
 
 .layout__footer {
-  @apply p-4;
+  @apply p-4 md:p-8 lg:p-10;
 }
 </style>

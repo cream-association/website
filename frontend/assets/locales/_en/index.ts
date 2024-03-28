@@ -15,4 +15,8 @@ export default {
   noBlogPost:
     "Bip-bop! Our robots are on a mission to unearth new items. Come back soon!",
   disableCustomCursor: "Use custom cursor.",
+  footer: {
+    rights: "All rights reserved.",
+    love: "Made with ❤️ in Paris.",
+  },
 };
