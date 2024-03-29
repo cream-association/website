@@ -8,8 +8,9 @@ import CFALogo from "~/assets/images/sponsors/cfa_insta_logo.png";
 import Robot from "~/assets/images/robot.png";
 
 const { isTabletOrMobile } = useDisplay();
-const runtimeConfig = useRuntimeConfig();
 const { locale } = useI18n();
+const localPath = useLocalePath();
+const runtimeConfig = useRuntimeConfig();
 const blogPosts = ref<BlogPost[]>([]);
 const {
   data: blogPostResponse,
@@ -163,7 +164,18 @@ onMounted(() => {
                 </p>
               </CardContent>
               <CardFooter class="pt-4 px-4 pb-6">
-                <Button class="hoverable">
+                <Button
+                  class="hoverable"
+                  @click="
+                    navigateTo(
+                      localPath(
+                        `/blog/${
+                          locale === 'en' ? blogPost.slug_en : blogPost.slug_fr
+                        }`
+                      )
+                    )
+                  "
+                >
                   {{ $t("pages.home.readMoreButton") }}
                   <CaretRightIcon class="h-4 w-4 ml-2" />
                 </Button>
