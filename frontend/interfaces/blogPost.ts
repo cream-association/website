@@ -5,8 +5,8 @@ export interface BlogCollection {
   id: string;
   collectionId: string;
   collectionName: string;
-  created: Date;
-  updated: Date;
+  created: string;
+  updated: string;
   name_fr: string;
   name_en: string;
   description_fr: string;
@@ -17,8 +17,8 @@ export interface BlogTag {
   id: string;
   collectionId: string;
   collectionName: string;
-  created: Date;
-  updated: Date;
+  created: string;
+  updated: string;
   name_fr: string;
   name_en: string;
   color: string;
@@ -30,8 +30,8 @@ export interface BlogPost {
   id: string;
   collectionId: string;
   collectionName: string;
-  created: Date;
-  updated: Date;
+  created: string;
+  updated: string;
   title_fr: string;
   title_en: string;
   description_fr: string;
