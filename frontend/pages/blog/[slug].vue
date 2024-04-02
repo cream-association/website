@@ -104,6 +104,28 @@ onMounted(() => {
                     {{ $dayjs(blogPost.updated).format("LL") }}
                   </time>
                 </p>
+                <p class="blog__article-header-meta my-2">
+                  {{ $t("pages.blogArticle.collection") }}
+                  <Badge variant="outline">
+                    {{
+                      locale === "en"
+                        ? blogPost.expand.collection.name_en
+                        : blogPost.expand.collection.name_fr
+                    }}
+                  </Badge>
+                </p>
+                <p class="blog__article-header-meta">
+                  {{ $t("pages.blogArticle.tags") }}
+                  <Badge
+                    v-for="tag in blogPost.expand.tag"
+                    :key="tag.id"
+                    :style="{ borderColor: tag.color }"
+                    variant="outline"
+                    class="mr-4"
+                  >
+                    {{ locale === "en" ? tag.name_en : tag.name_fr }}
+                  </Badge>
+                </p>
               </div>
             </div>
           </address>
@@ -128,6 +150,15 @@ onMounted(() => {
 .blog__article-content iframe,
 .blog__article-content img {
   @apply w-full h-full min-h-96;
+}
+.blog__article-content ol,
+.blog__article-content ul {
+  list-style: initial;
+  margin: initial;
+  padding: 0 0 0 40px;
+}
+.blog__article-content li {
+  display: list-item;
 }
 </style>
 <style scoped>
