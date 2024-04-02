@@ -117,7 +117,18 @@ onMounted(() => {
             class="!w-auto"
           >
             <Card class="home__blog-posts-card">
-              <div class="home__blog-posts-card-image hoverable">
+              <div
+                class="home__blog-posts-card-image hoverable"
+                @click="
+                  navigateTo(
+                    localPath(
+                      `/blog/${
+                        locale === 'en' ? blogPost.slug_en : blogPost.slug_fr
+                      }`
+                    )
+                  )
+                "
+              >
                 <Image
                   :source="`${runtimeConfig.public.pocketBaseFileUrl}/${blogPost.collectionId}/${blogPost.id}/${blogPost.header_image}`"
                   alt-text="post header image"

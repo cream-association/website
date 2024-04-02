@@ -3,11 +3,15 @@ import { HamburgerMenuIcon } from "@radix-icons/vue";
 
 const { isTabletOrMobile } = useDisplay();
 const drawerStore = useDrawerStore();
+const globalStore = useGlobalStore();
 
 watch(isTabletOrMobile, (newState) => {
   drawerStore.$patch({
     isOpen: !newState,
   });
+  setTimeout(() => {
+    globalStore.mobileHeaderMounted = newState;
+  }, 5000);
 });
 </script>
 
