@@ -4,27 +4,30 @@ import type { BlogPost } from "~/interfaces/blogPost";
 import { ChevronLeftIcon } from "@radix-icons/vue";
 
 import Prism from "~/composables/prism";
+import serverErrorLogo from "~/assets/images/5xx.svg";
+import notFoundLogo from "~/assets/images/4xx.svg";
 
 const router = useRouter();
 const { locale } = useI18n();
 const runtimeConfig = useRuntimeConfig();
 const localPath = useLocalePath();
 const slug = computed(() => useRoute().params.slug as string);
-const blogPost = ref<BlogPost | undefined>(undefined);
 const {
-  data: blogPostResponse,
+  data: blogPost,
   error: blogPostError,
   pending: pendingBlogPost,
   refresh: refreshBlogPost,
 } = useLazyFetch(`/api/blog-post?slug=${slug.value}&locale=${locale.value}`);
 
-watch(blogPostResponse, (newBlogPost) => {
-  if (newBlogPost === null) {
-    blogPost.value = undefined;
-    return;
+const getImage = (errorCode: number): string => {
+  if (errorCode > 399 && errorCode <= 499) {
+    return notFoundLogo;
+  } else {
+    return serverErrorLogo;
   }
+};
 
-  blogPost.value = newBlogPost;
+watch(blogPost, (newBlogPost) => {
   setTimeout(() => {
     Prism.highlightAll();
   }, 500);
@@ -33,6 +36,7 @@ watch(blogPostResponse, (newBlogPost) => {
 watch(locale, (newLocale) => {
   if (
     blogPost.value === undefined ||
+    blogPost.value === null ||
     pendingBlogPost.value ||
     blogPostError.value
   ) {
@@ -43,12 +47,6 @@ watch(locale, (newLocale) => {
       newLocale === "en" ? blogPost.value.slug_en : blogPost.value.slug_fr
     }`
   );
-});
-
-onMounted(() => {
-  setTimeout(() => {
-    refreshBlogPost();
-  }, 500);
 });
 </script>
 
@@ -64,7 +62,10 @@ onMounted(() => {
         {{ $t("pages.blogArticle.backToPosts") }}
       </Button>
     </section>
-    <section class="blog__section" v-if="blogPost">
+    <section
+      class="blog__section"
+      v-if="!pendingBlogPost && blogPost !== undefined && blogPost !== null"
+    >
       <article class="blog__article">
         <header class="blog__article-header">
           <div class="blog__article-header-img-wrapper">
@@ -144,6 +145,96 @@ onMounted(() => {
         ></div>
       </article>
     </section>
+    <section class="blog__section w-full" v-if="pendingBlogPost">
+      <div class="blog__article w-full">
+        <div class="blog__article-header w-full">
+          <Skeleton class="blog__article-header-img-wrapper h-56" />
+          <address class="blog__article-header-address w-full">
+            <div class="blog__article-header-address w-full">
+              <Skeleton class="w-16 !h-16 !min-h-16 !min-w-16 rounded-full" />
+              <div class="ml-4 w-full">
+                <Skeleton class="w-56 h-4" />
+                <Skeleton class="w-40 h-4 my-2" />
+                <div class="blog__article-header-meta flex">
+                  <Skeleton class="w-20 h-4 mr-2" />
+                  <Skeleton class="w-32 h-4" />
+                </div>
+                <div class="blog__article-header-meta flex mt-2 max-w-2xl">
+                  <Skeleton class="min-w-20 h-4 mr-4" />
+                  <Skeleton v-for="i of 4" :key="i" class="w-2/4 h-4 mr-4" />
+                </div>
+              </div>
+            </div>
+          </address>
+          <Skeleton class="blog__article-header-title h-10 w-5/6" />
+          <Skeleton
+            class="h-7 my-2 w-full"
+            v-for="i of 4"
+            :key="`abstract-${i}`"
+          />
+          <div class="my-8"></div>
+          <Skeleton
+            class="h-4 my-2 w-full"
+            v-for="i of 6"
+            :key="`paragraph-1-${i}`"
+          />
+          <div class="my-8"></div>
+          <Skeleton
+            class="h-4 my-2 w-full"
+            v-for="i of 3"
+            :key="`paragraph-2-${i}`"
+          />
+          <div class="my-8"></div>
+          <Skeleton
+            class="h-4 my-2 w-full"
+            v-for="i of 5"
+            :key="`paragraph-3-${i}`"
+          />
+        </div>
+      </div>
+    </section>
+    <section
+      v-if="
+        !pendingBlogPost &&
+        (blogPost === undefined || blogPost === null) &&
+        blogPostError
+      "
+    >
+      <div class="blog__error">
+        <div class="self-center">
+          <h1 class="text-primary font-bold text-xl">
+            {{ blogPostError.statusCode }} {{ blogPostError.statusMessage }}
+          </h1>
+          <p class="font-bold mb-4 text-3xl md:text-4xl md:mb-10">
+            {{ $t("error.page") }}
+          </p>
+          <p class="mb-4">{{ $t("error.links") }}</p>
+          <ul class="flex items-center gap-4">
+            <li>
+              <NuxtLinkLocale to="/" class="underline">
+                {{ $t("navigation.home") }}
+              </NuxtLinkLocale>
+            </li>
+            <li>
+              <NuxtLinkLocale to="/blog" class="underline">
+                {{ $t("navigation.blog") }}
+              </NuxtLinkLocale>
+            </li>
+            <li>
+              <NuxtLinkLocale to="/gallery" class="underline">
+                {{ $t("navigation.gallery") }}
+              </NuxtLinkLocale>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <Image
+            :source="getImage(blogPostError.statusCode || 500)"
+            alt="error image"
+          />
+        </div>
+      </div>
+    </section>
   </div>
 </template>
 <style>
@@ -200,5 +291,8 @@ onMounted(() => {
 }
 .blog__article-header-lead {
   @apply text-lg md:text-xl xl:text-2xl mb-4;
+}
+.blog__error {
+  @apply px-4 py-8 gap-8 content-center grid-cols-2 max-w-screen-xl mx-auto md:grid lg:px-6 lg:py-16;
 }
 </style>

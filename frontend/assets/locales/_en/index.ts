@@ -19,4 +19,8 @@ export default {
     rights: "All rights reserved.",
     love: "Made with ❤️ in Paris.",
   },
+  error: {
+    page: "Whoops! That page doesn’t exist.",
+    links: "Here are some helpful links:",
+  },
 };

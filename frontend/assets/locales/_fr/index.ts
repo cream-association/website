@@ -19,4 +19,8 @@ export default {
     rights: "Tous droits réservés.",
     love: "Fait avec ❤️ à Paris.",
   },
+  error: {
+    page: "Oups ! Cette page n'existe pas.",
+    links: "Voici quelques liens utiles :",
+  },
 };
