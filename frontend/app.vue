@@ -1,10 +1,15 @@
 <script setup lang="ts">
 import Logo from "~/assets/images/logo.svg";
 
+const { finalizePendingLocaleChange } = useI18n();
 const { locale } = useI18n();
 const dayjs = useDayjs();
 const globalStore = useGlobalStore();
 const loaded = ref(false);
+
+const onBeforeEnter = async () => {
+  await finalizePendingLocaleChange();
+};
 
 watch(locale, (newLocale) => {
   dayjs.locale(newLocale);
@@ -15,11 +20,7 @@ onMounted(() => {
 });
 </script>
 <template>
-  <div
-    class="app"
-    v-show="loaded"
-    :data-custom-cursor="globalStore.useCustomCursor.toString()"
-  >
+  <div class="app" v-show="loaded" :data-custom-cursor="globalStore.useCustomCursor.toString()">
     <ClientOnly>
       <Cursor v-if="globalStore.useCustomCursor" />
     </ClientOnly>
@@ -28,7 +29,11 @@ onMounted(() => {
         <SideBar />
       </template>
       <template #main>
-        <NuxtPage />
+        <NuxtPage :transition="{
+    name: 'page',
+    mode: 'out-in',
+    onBeforeEnter,
+  }" />
       </template>
       <template #footer>
         <Footer />
@@ -45,6 +50,7 @@ onMounted(() => {
 .app {
   @apply bg-background;
 }
+
 .loader {
   @apply h-dvh flex flex-col items-center justify-center;
 }
@@ -62,6 +68,7 @@ onMounted(() => {
 .page-leave-active {
   transition: opacity 0.4s ease-in-out;
 }
+
 .page-enter-from,
 .page-leave-to {
   opacity: 0;

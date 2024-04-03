@@ -16,12 +16,6 @@ export default defineNuxtConfig({
     "nuxt-swiper",
     "dayjs-nuxt",
   ],
-  app: {
-    pageTransition: {
-      name: "page",
-      mode: "out-in",
-    },
-  },
   runtimeConfig: {
     public: {
       pocketBaseUrl: "",
@@ -50,6 +44,7 @@ export default defineNuxtConfig({
     fallback: "dark",
   },
   i18n: {
+    skipSettingLocaleOnNavigate: true,
     defaultLocale: "fr",
     locales: [
       {
