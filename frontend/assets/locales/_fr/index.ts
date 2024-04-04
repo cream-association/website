@@ -9,6 +9,7 @@ export default {
     blog: "Blog",
     gallery: "Gallerie",
     about: "À Propos",
+    contact: "Contact",
   },
   fetchError:
     "Une erreur s'est produite lors de la récupération des données. Raison :",

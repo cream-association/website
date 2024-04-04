@@ -10,6 +10,7 @@ export default {
     blog: "Blog",
     gallery: "Gallery",
     about: "About us",
+    contact: "Contact",
   },
   fetchError: "An error occurred during data fetch. Reason:",
   noBlogPost:
