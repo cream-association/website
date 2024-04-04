@@ -4,6 +4,8 @@ import { HamburgerMenuIcon } from "@radix-icons/vue";
 const { isTabletOrMobile } = useDisplay();
 const drawerStore = useDrawerStore();
 const globalStore = useGlobalStore();
+const router = useRouter();
+const wrapper = ref<HTMLElement | null>();
 
 watch(isTabletOrMobile, (newState) => {
   drawerStore.$patch({
@@ -13,36 +15,39 @@ watch(isTabletOrMobile, (newState) => {
     globalStore.mobileHeaderMounted = newState;
   }, 5000);
 });
+
+router.beforeEach((to, from, next) => {
+  if (wrapper.value === null) {
+    return;
+  }
+
+  wrapper.value.scrollTo(0, 0);
+
+  next();
+});
 </script>
 
 <template>
   <div class="layout">
     <!-- sidebar -->
     <ClientOnly>
-      <aside
-        :class="{
-          layout__sidebar: true,
-          'layout__sidebar-mobile-open':
-            isTabletOrMobile() && drawerStore.isOpen,
-        }"
-      >
+      <aside :class="{
+        layout__sidebar: true,
+        'layout__sidebar-mobile-open':
+          isTabletOrMobile() && drawerStore.isOpen,
+      }">
         <Transition name="slide" mode="out-in">
           <slot name="drawer"></slot>
         </Transition>
       </aside>
     </ClientOnly>
     <!-- main + footer -->
-    <div class="layout__content-wrapper">
+    <div class="layout__content-wrapper" ref="wrapper">
       <ClientOnly>
         <!-- header only on mobile -->
         <header class="layout__header" v-if="isTabletOrMobile()">
-          <Button
-            variant="outline"
-            size="icon"
-            class="layout__header-drawer-btn"
-            @click="drawerStore.toggleDrawer()"
-            v-if="!drawerStore.isOpen"
-          >
+          <Button variant="outline" size="icon" class="layout__header-drawer-btn" @click="drawerStore.toggleDrawer()"
+            v-if="!drawerStore.isOpen">
             <HamburgerMenuIcon class="layout__header-drawer-icon" />
           </Button>
         </header>
