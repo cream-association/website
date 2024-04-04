@@ -45,7 +45,7 @@
 }
 
 .about__title {
-  @apply flex items-center justify-center font-bold text-4xl lg:text-6xl mb-8;
+  @apply flex items-center justify-center font-bold text-4xl lg:text-6xl mb-8 text-primary;
 }
 
 .about__content {
@@ -53,7 +53,7 @@
 }
 
 .about__content-h2 {
-  @apply text-2xl font-semibold mb-2;
+  @apply text-2xl font-semibold mb-2 text-primary;
 }
 
 .about__content-p {
