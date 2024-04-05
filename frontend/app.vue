@@ -3,6 +3,7 @@ import Logo from "~/assets/images/logo.svg";
 
 const { finalizePendingLocaleChange } = useI18n();
 const { locale } = useI18n();
+const colorMode = useColorMode();
 const dayjs = useDayjs();
 const globalStore = useGlobalStore();
 const loaded = ref(false);
@@ -20,20 +21,27 @@ onMounted(() => {
 });
 </script>
 <template>
-  <div class="app" v-show="loaded" :data-custom-cursor="globalStore.useCustomCursor.toString()">
+  <div
+    class="app"
+    v-show="loaded"
+    :data-custom-cursor="globalStore.useCustomCursor.toString()"
+  >
     <ClientOnly>
       <Cursor v-if="globalStore.useCustomCursor" />
+      <Toaster :theme="colorMode.value" position="bottom-right" richColors />
     </ClientOnly>
     <nuxt-layout>
       <template #drawer>
         <SideBar />
       </template>
       <template #main>
-        <NuxtPage :transition="{
-    name: 'page',
-    mode: 'out-in',
-    onBeforeEnter,
-  }" />
+        <NuxtPage
+          :transition="{
+            name: 'page',
+            mode: 'out-in',
+            onBeforeEnter,
+          }"
+        />
       </template>
       <template #footer>
         <Footer />
