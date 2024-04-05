@@ -5,9 +5,10 @@ RUN apk update
 
 RUN corepack enable && corepack prepare pnpm@latest --activate
 
-COPY . .
-
+COPY ["package.json", "pnpm-lock.yaml", "./"]
 RUN pnpm install
+
+COPY . .
 
 EXPOSE 3000
 
