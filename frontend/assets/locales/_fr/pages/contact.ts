@@ -8,4 +8,14 @@ export default {
   message: "Message",
   message_placeholder: "Votre message",
   send: "Envoyer votre message",
+  toast: {
+    error: {
+      title: "Erreur lors de l'envoie",
+      content: "Un ou plusieurs champs sont vide.",
+    },
+    success: {
+      title: "Message envoyé",
+      content: "Message envoyé avec succès!",
+    },
+  },
 };

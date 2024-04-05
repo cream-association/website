@@ -8,4 +8,14 @@ export default {
   message: "Message",
   message_placeholder: "Your message",
   send: "Send your message",
+  toast: {
+    error: {
+      title: "Error while sending message",
+      content: "One or more fields are empty.",
+    },
+    success: {
+      title: "Message sent !",
+      content: "Message successfully sent !",
+    },
+  },
 };
