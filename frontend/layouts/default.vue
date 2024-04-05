@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { HamburgerMenuIcon } from "@radix-icons/vue";
+import { set } from "@vueuse/core";
 
 const { isTabletOrMobile } = useDisplay();
 const drawerStore = useDrawerStore();
@@ -16,14 +17,14 @@ watch(isTabletOrMobile, (newState) => {
   }, 5000);
 });
 
-router.beforeEach((to, from, next) => {
+router.afterEach(() => {
   if (wrapper.value === null) {
     return;
   }
 
-  wrapper.value.scrollTo(0, 0);
-
-  next();
+  setTimeout(() => {
+    wrapper.value?.scrollTo(0, 0);
+  }, 500);
 });
 </script>
 
@@ -31,11 +32,13 @@ router.beforeEach((to, from, next) => {
   <div class="layout">
     <!-- sidebar -->
     <ClientOnly>
-      <aside :class="{
-        layout__sidebar: true,
-        'layout__sidebar-mobile-open':
-          isTabletOrMobile() && drawerStore.isOpen,
-      }">
+      <aside
+        :class="{
+          layout__sidebar: true,
+          'layout__sidebar-mobile-open':
+            isTabletOrMobile() && drawerStore.isOpen,
+        }"
+      >
         <Transition name="slide" mode="out-in">
           <slot name="drawer"></slot>
         </Transition>
@@ -46,8 +49,13 @@ router.beforeEach((to, from, next) => {
       <ClientOnly>
         <!-- header only on mobile -->
         <header class="layout__header" v-if="isTabletOrMobile()">
-          <Button variant="outline" size="icon" class="layout__header-drawer-btn" @click="drawerStore.toggleDrawer()"
-            v-if="!drawerStore.isOpen">
+          <Button
+            variant="outline"
+            size="icon"
+            class="layout__header-drawer-btn"
+            @click="drawerStore.toggleDrawer()"
+            v-if="!drawerStore.isOpen"
+          >
             <HamburgerMenuIcon class="layout__header-drawer-icon" />
           </Button>
         </header>
