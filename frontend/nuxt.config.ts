@@ -16,6 +16,7 @@ export default defineNuxtConfig({
     "nuxt-swiper",
     "dayjs-nuxt",
   ],
+  build: { transpile: ["vue-sonner"] },
   runtimeConfig: {
     public: {
       pocketBaseUrl: "",
