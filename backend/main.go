@@ -54,6 +54,7 @@ func main() {
 					}
 
 					if err := app.NewMailClient().Send(message); err != nil {
+						app.Logger().Error(err.Error())
 						return nil
 					}
 
