@@ -49,6 +49,28 @@ const dayjs = useDayjs();
           {{ $t("navigation.gallery") }}
         </NuxtLinkLocale>
       </li>
+      <li>
+        <NuxtLinkLocale
+          to="/contact"
+          class="mr-4 hover:underline md:mr-6 hoverable"
+        >
+          {{ $t("navigation.contact") }}
+        </NuxtLinkLocale>
+      </li>
+      <li>
+        <a href="/sitemap.xml" class="mr-4 hover:underline md:mr-6 hoverable">
+          sitemap
+        </a>
+      </li>
+      <li>
+        <a
+          href="https://github.com/cream-association"
+          target="_blank"
+          class="mr-4 hover:underline md:mr-6 hoverable"
+        >
+          GitHub
+        </a>
+      </li>
     </ul>
     <div class="flex justify-center align-center flex-col gap-4">
       <span class="text-sm text-muted-foreground sm:text-center">
