@@ -7,8 +7,8 @@ import type { BlogCollection } from "~/interfaces/blogPost";
 const { locale, t } = useI18n({ useScope: "local" });
 const props = defineProps<{ type: "blog" | "gallery" }>();
 const open = ref(false);
-const selectedCollection = ref<{ id?: string; label?: string }>();
 const inputValue = ref("");
+const filtersStore = useFiltersStore();
 
 const { data: CollectionResponse, pending: pendingCollection } = useLazyFetch(
   () =>
@@ -16,7 +16,7 @@ const { data: CollectionResponse, pending: pendingCollection } = useLazyFetch(
 );
 
 const resetFilter = () => {
-  selectedCollection.value = {};
+  filtersStore.selectedCollection = {};
   inputValue.value = "";
 };
 
@@ -29,7 +29,7 @@ const onItemSelected = (collection: BlogCollection | undefined) => {
     return;
   }
 
-  selectedCollection.value = {
+  filtersStore.selectedCollection = {
     id: collection.id,
     label: isEn ? collection.name_en : collection.name_fr,
   };
@@ -46,14 +46,14 @@ const onItemSelected = (collection: BlogCollection | undefined) => {
         class="w-[300px] justify-between"
       >
         <span class="max-w-[200px] text-ellipsis overflow-clip">
-          {{ selectedCollection?.label || t("noSelection") }}
+          {{ filtersStore.selectedCollection?.label || t("noSelection") }}
         </span>
         <CaretSortIcon class="ml-2 h-4 w-4 shrink-0 opacity-50" />
 
         <CrossCircledIcon
           class="h-6 w-6 shrink-0 hover:text-muted-foreground"
           @click.stop.prevent="resetFilter()"
-          v-if="Object.keys(selectedCollection || {}).length > 0"
+          v-if="Object.keys(filtersStore.selectedCollection || {}).length > 0"
         />
       </Button>
     </PopoverTrigger>
@@ -80,7 +80,9 @@ const onItemSelected = (collection: BlogCollection | undefined) => {
               @select="onItemSelected(collection)"
             >
               {{ isEn ? collection?.name_en : collection?.name_fr }}
-              <CheckIcon v-if="selectedCollection?.id === collection.id" />
+              <CheckIcon
+                v-if="filtersStore.selectedCollection?.id === collection.id"
+              />
             </CommandItem>
           </CommandGroup>
         </CommandList>

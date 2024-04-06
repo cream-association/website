@@ -7,9 +7,9 @@ import type { BlogTag } from "~/interfaces/blogPost";
 const { locale } = useI18n();
 const props = defineProps<{ type: "blog" | "gallery" }>();
 const open = ref(false);
-const selectedTag = ref<{ id?: string; label?: string }[]>([]);
 const inputValue = ref("");
 const { t } = useI18n({ useScope: "local" });
+const filtersStore = useFiltersStore();
 
 const { data: tagResponse, pending: pendingTag } = useLazyFetch(
   () =>
@@ -17,7 +17,7 @@ const { data: tagResponse, pending: pendingTag } = useLazyFetch(
 );
 
 const resetFilter = () => {
-  selectedTag.value = [];
+  filtersStore.selectedTags = [];
   inputValue.value = "";
 };
 
@@ -26,7 +26,7 @@ const isEn = computed(() => {
 });
 
 const isTagSelected = (selected: { id?: string; label?: string }): boolean => {
-  return !!selectedTag.value.find((sTag) => sTag.id === selected.id);
+  return !!filtersStore.selectedTags.find((sTag) => sTag.id === selected.id);
 };
 
 const onItemSelected = (tag: BlogTag | undefined) => {
@@ -40,12 +40,12 @@ const onItemSelected = (tag: BlogTag | undefined) => {
   };
 
   if (isTagSelected(sTag)) {
-    selectedTag.value.splice(
-      selectedTag.value.findIndex((item) => item.id === sTag.id),
+    filtersStore.selectedTags.splice(
+      filtersStore.selectedTags.findIndex((item) => item.id === sTag.id),
       1
     );
   } else {
-    selectedTag.value.push(sTag);
+    filtersStore.selectedTags.push(sTag);
   }
 };
 </script>
@@ -61,7 +61,8 @@ const onItemSelected = (tag: BlogTag | undefined) => {
       >
         <span class="max-w-[200px] text-ellipsis overflow-clip">
           {{
-            selectedTag.map((tag) => tag.label).join(", ") || t("noSelection")
+            filtersStore.selectedTags.map((tag) => tag.label).join(", ") ||
+            t("noSelection")
           }}
         </span>
         <CaretSortIcon class="ml-2 h-4 w-4 shrink-0 opacity-50" />
@@ -69,7 +70,7 @@ const onItemSelected = (tag: BlogTag | undefined) => {
         <CrossCircledIcon
           class="h-6 w-6 shrink-0 hover:text-muted-foreground"
           @click.stop.prevent="resetFilter()"
-          v-if="selectedTag.length > 0"
+          v-if="filtersStore.selectedTags.length > 0"
         />
       </Button>
     </PopoverTrigger>
