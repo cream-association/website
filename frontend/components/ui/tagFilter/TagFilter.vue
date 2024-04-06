@@ -9,6 +9,7 @@ const props = defineProps<{ type: "blog" | "gallery" }>();
 const open = ref(false);
 const selectedTag = ref<{ id?: string; label?: string }[]>([]);
 const inputValue = ref("");
+const { t } = useI18n({ useScope: "local" });
 
 const { data: tagResponse, pending: pendingTag } = useLazyFetch(
   () =>
@@ -56,10 +57,12 @@ const onItemSelected = (tag: BlogTag | undefined) => {
         variant="outline"
         role="combobox"
         :aria-expanded="open"
-        class="w-[200px] justify-between"
+        class="w-[300px] justify-between"
       >
-        <span class="max-w-[100px] text-ellipsis overflow-auto">
-          {{ selectedTag.map((tag) => tag.label).join(", ") || "Tag filter" }}
+        <span class="max-w-[200px] text-ellipsis overflow-clip">
+          {{
+            selectedTag.map((tag) => tag.label).join(", ") || t("noSelection")
+          }}
         </span>
         <CaretSortIcon class="ml-2 h-4 w-4 shrink-0 opacity-50" />
 
@@ -70,12 +73,12 @@ const onItemSelected = (tag: BlogTag | undefined) => {
         />
       </Button>
     </PopoverTrigger>
-    <PopoverContent class="w-[200px] p-0">
+    <PopoverContent class="w-[300px] p-0">
       <Command v-model:search-term="inputValue" multiple>
-        <CommandInput class="h-9" placeholder="Search tags..." />
+        <CommandInput class="h-9" :placeholder="t('searchPlaceholder')" />
         <CommandEmpty class="flex justify-center items-center">
           <CircleSpinner cssVar="--primary-foreground" v-if="pendingTag" />
-          <span v-else>No tag found.</span>
+          <span v-else>{{ t("empty") }}</span>
         </CommandEmpty>
         <CommandList>
           <CommandGroup>
@@ -102,3 +105,17 @@ const onItemSelected = (tag: BlogTag | undefined) => {
     </PopoverContent>
   </Popover>
 </template>
+<i18n lang="json">
+{
+  "fr": {
+    "empty": "Aucun tag trouvé",
+    "noSelection": "Filtrer par tag",
+    "searchPlaceholder": "Chercher un tag"
+  },
+  "en": {
+    "empty": "No tag found",
+    "noSelection": "Filter by tag",
+    "searchPlaceholder": "Search a tag"
+  }
+}
+</i18n>
