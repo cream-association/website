@@ -11,6 +11,7 @@ const { isTabletOrMobile } = useDisplay();
 const { locale } = useI18n();
 const localPath = useLocalePath();
 const runtimeConfig = useRuntimeConfig();
+const email = ref("");
 const blogPosts = ref<BlogPost[]>([]);
 const {
   data: blogPostResponse,
@@ -18,6 +19,20 @@ const {
   pending: pendingBlogPost,
   refresh: refreshBlogPost,
 } = useLazyFetch(() => "/api/home-blog");
+
+const goToContact = (sponsor: boolean) => {
+  if (sponsor) {
+    navigateTo({ path: localPath("/contact"), query: { sponsor: 1 } });
+    return;
+  }
+
+  if (!email.value) {
+    navigateTo(localPath("/contact"));
+    return;
+  }
+
+  navigateTo({ path: localPath("/contact"), query: { email: email.value } });
+};
 
 watch(blogPostResponse, (newResponse) => {
   blogPosts.value = (newResponse?.items as unknown as BlogPost[]) || [];
@@ -43,8 +58,9 @@ onMounted(() => {
             id="email"
             type="email"
             :placeholder="$t('pages.home.mailInput')"
+            v-model="email"
           />
-          <Button class="hoverable">
+          <Button class="hoverable" @click="goToContact(false)">
             <EnvelopeOpenIcon class="w-4 h-4 mr-2" />
             {{ $t("pages.home.contactBtn") }}
           </Button>
@@ -73,7 +89,7 @@ onMounted(() => {
           />
         </a>
         <NuxtLinkLocale
-          to="/contact"
+          @click="goToContact(true)"
           class="home__sponsors-item text-primary font-bold hoverable"
         >
           {{ $t("pages.home.sponsorsGetInTouch") }}

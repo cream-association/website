@@ -5,6 +5,7 @@ const subject = ref("");
 const message = ref("");
 const { t } = useI18n();
 const { $toast } = useNuxtApp();
+const route = useRoute();
 
 const submitForm = async () => {
   sendingMessage.value = true;
@@ -36,6 +37,16 @@ const submitForm = async () => {
       sendingMessage.value = false;
     });
 };
+
+onMounted(() => {
+  if (route.query.email) {
+    email.value = route.query.email as string;
+  }
+
+  if (route.query.sponsor) {
+    subject.value = "[sponsor] ...";
+  }
+});
 </script>
 
 <template>
