@@ -126,11 +126,15 @@ onMounted(() => {
       </Transition>
     </ClientOnly>
     <div class="gallery__grid">
-      <Image
+      <div
+        class="max-h-52"
         v-for="image of galleryResponse?.items"
         :key="image.id"
-        :source="`${runtimeConfig.public.pocketBaseFileUrl}/${image.collectionId}/${image.id}/${image.image}`"
-      />
+      >
+        <Image
+          :source="`${runtimeConfig.public.pocketBaseFileUrl}/${image.collectionId}/${image.id}/${image.image}`"
+        />
+      </div>
     </div>
     <div class="gallery__pagination">
       <Pagination
@@ -170,6 +174,11 @@ onMounted(() => {
     </div>
   </div>
 </template>
+<style>
+.gallery__grid img {
+  @apply !w-full !object-cover;
+}
+</style>
 <style scoped>
 .gallery {
   @apply flex flex-col gap-4 min-h-full;
@@ -198,6 +207,10 @@ onMounted(() => {
   @apply grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4;
   grid-auto-rows: auto;
 }
+.gallery__grid figure {
+  @apply m-0 !w-full;
+}
+
 .gallery__pagination {
   @apply flex justify-center items-center;
 }
