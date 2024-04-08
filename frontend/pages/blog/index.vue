@@ -127,6 +127,20 @@ onMounted(() => {
     <div class="blog__content">
       <section class="blog__content-grid">
         <Card
+          class="home__blog-posts-card hoverable"
+          v-if="pendingBlogPost"
+          v-for="i in 20"
+          :key="i"
+        >
+          <Skeleton class="h-32 w-full rounded-t-xl" />
+          <CardHeader class="px-0">
+            <div class="px-4 flex flex-col gap-4">
+              <Skeleton class="h-4 w-60" />
+              <Skeleton class="h-4 w-56" />
+            </div>
+          </CardHeader>
+        </Card>
+        <Card
           class="home__blog-posts-card"
           v-for="blogPost of blogPostResponse?.items"
           :key="blogPost.id"

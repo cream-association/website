@@ -121,8 +121,10 @@ onMounted(() => {
             <Card class="home__blog-posts-card hoverable">
               <Skeleton class="h-32 w-full rounded-xl" />
               <CardHeader class="px-0">
-                <Skeleton class="h-4 w-60" />
-                <Skeleton class="h-4 w-56" />
+                <div class="px-4 flex flex-col gap-4">
+                  <Skeleton class="h-4 w-60" />
+                  <Skeleton class="h-4 w-56" />
+                </div>
               </CardHeader>
             </Card>
           </SwiperSlide>
