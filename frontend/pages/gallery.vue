@@ -84,6 +84,8 @@ filtersStore.$subscribe((mutation, state) => {
   query.value = queryParams.toString();
 });
 
+const isEn = computed(() => locale.value == "en");
+
 onMounted(() => {
   filtersOpen.value = !isMobile();
 });
@@ -127,13 +129,48 @@ onMounted(() => {
     </ClientOnly>
     <div class="gallery__grid">
       <div
-        class="max-h-52"
+        class="max-h-96 relative group"
         v-for="image of galleryResponse?.items"
         :key="image.id"
       >
         <Image
           :source="`${runtimeConfig.public.pocketBaseFileUrl}/${image.collectionId}/${image.id}/${image.image}`"
         />
+        <div
+          class="absolute inset-0 bg-black bg-opacity-75 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+        >
+          <div class="flex flex-col w-full h-full">
+            <div class="gallery__img-meta p-4">
+              <Avatar class="gallery__img-meta-avatar">
+                <AvatarImage
+                  :src="`https://api.dicebear.com/8.x/bottts-neutral/svg?seed=${image.author}`"
+                  alt="author avatar"
+                />
+                <AvatarFallback>{{
+                  image.author
+                    .match(/(^\S\S?|\s\S)?/g)
+                    ?.map((v) => v.trim())
+                    .join("")
+                    .match(/(^\S|\S$)?/g)
+                    ?.join("")
+                    .toLocaleUpperCase()
+                }}</AvatarFallback>
+              </Avatar>
+              <div class="">
+                <p class="font-semibold">
+                  {{ image.author }}
+                </p>
+                <p class="text-xs text-muted-foreground">
+                  {{ $dayjs(image.creation_date).format("LL") }}
+                </p>
+              </div>
+            </div>
+            <div class="flex-grow"></div>
+            <div class="p-4 font-bold text-xl overlay__title">
+              <h3>{{ isEn ? image.title_en : image.title_fr }}</h3>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <div class="gallery__pagination">
@@ -176,7 +213,7 @@ onMounted(() => {
 </template>
 <style>
 .gallery__grid img {
-  @apply !w-full !object-cover;
+  @apply !w-full !object-cover object-center;
 }
 </style>
 <style scoped>
@@ -202,6 +239,21 @@ onMounted(() => {
 .filter-enter-to,
 .filter-leave-from {
   @apply scale-y-100;
+}
+.gallery__img-meta {
+  @apply flex items-center gap-2 mb-4;
+}
+.gallery__img-meta-avatar {
+  @apply w-8 h-8;
+}
+.overlay__title {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 90%;
+  max-height: 8.4rem;
 }
 .gallery__grid {
   @apply grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4;
