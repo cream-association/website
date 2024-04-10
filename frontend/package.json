@@ -41,6 +41,6 @@
     "dayjs-nuxt": "^2.1.9",
     "nuxt": "^3.11.1",
     "shadcn-nuxt": "^0.10.2",
-    "typescript": "^5.4.2"
+    "typescript": "^5.4.4"
   }
 }
