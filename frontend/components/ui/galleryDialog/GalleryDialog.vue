@@ -63,8 +63,8 @@ const setThumbsSwiper = (swiper: HTMLElement) => {
 .main-swiper-slide .image__wrapper {
   @apply flex justify-center;
 }
-.main-swiper-slide .image__wrapper .image__item {
-  @apply w-[unset];
+.swiper-slide .image__wrapper .image__item {
+  @apply !w-[unset];
 }
 .thumb-swiper-slide {
   @apply flex;
