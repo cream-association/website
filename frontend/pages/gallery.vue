@@ -292,17 +292,15 @@ onMounted(() => {
     </div>
   </div>
 </template>
-<style scoped>
-.gallery__error {
-  @apply px-4 py-8 gap-8 content-center grid-cols-2 max-w-screen-xl mx-auto md:grid lg:px-6 lg:py-16;
-}
-</style>
 <style>
 .gallery__grid img {
   @apply !w-full !object-cover object-center;
 }
 </style>
 <style scoped>
+.gallery__error {
+  @apply px-4 py-8 gap-8 content-center grid-cols-2 max-w-screen-xl mx-auto md:grid lg:px-6 lg:py-16;
+}
 .gallery {
   @apply flex flex-col gap-4 min-h-full;
 }
