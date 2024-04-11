@@ -3,6 +3,7 @@ import { CaretRightIcon, MixerHorizontalIcon } from "@radix-icons/vue";
 
 import serverErrorLogo from "~/assets/images/5xx.svg";
 import notFoundLogo from "~/assets/images/4xx.svg";
+import Robot from "~/assets/images/robot.png";
 
 const runtimeConfig = useRuntimeConfig();
 const { isMobile } = useDisplay();
@@ -262,6 +263,19 @@ onMounted(() => {
             />
           </div>
         </div>
+      </section>
+      <section
+        v-if="
+          !pendingBlogPost &&
+          blogPostResponse?.items &&
+          blogPostResponse?.items.length <= 0
+        "
+        class="flex flex-col justify-center items-center self-center p-8 flex-1"
+      >
+        <div class="inline-block overflow-hidden max-h-44 rounded-t-xl w-24">
+          <Image :source="Robot" alt-text="robot" />
+        </div>
+        <p class="text-center font-semibold">{{ $t("noBlogPost") }}</p>
       </section>
     </div>
     <div class="blog__pagination">

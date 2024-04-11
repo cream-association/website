@@ -3,6 +3,7 @@ import { MixerHorizontalIcon } from "@radix-icons/vue";
 
 import serverErrorLogo from "~/assets/images/5xx.svg";
 import notFoundLogo from "~/assets/images/4xx.svg";
+import Robot from "~/assets/images/robot.png";
 
 const runtimeConfig = useRuntimeConfig();
 const { isMobile } = useDisplay();
@@ -127,8 +128,16 @@ onMounted(() => {
         </div>
       </Transition>
     </ClientOnly>
-    <div class="gallery__grid">
+    <section
+      class="gallery__grid"
+      v-if="
+        !galleryError &&
+        galleryResponse?.items &&
+        galleryResponse?.items.length > 0
+      "
+    >
       <div
+        v-if="!pendingGallery"
         class="max-h-96 relative group"
         v-for="(image, index) of galleryResponse?.items"
         :key="image.id"
@@ -181,7 +190,70 @@ onMounted(() => {
           />
         </Dialog>
       </div>
-    </div>
+      <div
+        v-if="pendingGallery"
+        v-for="i in 20"
+        :key="i"
+        class="w-full h-full relative group"
+      >
+        <Skeleton class="h-96" />
+      </div>
+    </section>
+    <section
+      v-if="
+        !pendingGallery &&
+        (galleryResponse === undefined || galleryResponse === null) &&
+        galleryError
+      "
+    >
+      <div class="gallery__error">
+        <div class="self-center">
+          <h1 class="text-primary font-bold text-xl">
+            {{ galleryError.statusCode }} {{ galleryError.statusMessage }}
+          </h1>
+          <p class="font-bold mb-4 text-3xl md:text-4xl md:mb-10">
+            {{ $t("error.page") }}
+          </p>
+          <p class="mb-4">{{ $t("error.links") }}</p>
+          <ul class="flex items-center gap-4">
+            <li>
+              <NuxtLinkLocale to="/" class="underline">
+                {{ $t("navigation.home") }}
+              </NuxtLinkLocale>
+            </li>
+            <li>
+              <NuxtLinkLocale to="/blog" class="underline">
+                {{ $t("navigation.blog") }}
+              </NuxtLinkLocale>
+            </li>
+            <li>
+              <NuxtLinkLocale to="/gallery" class="underline">
+                {{ $t("navigation.gallery") }}
+              </NuxtLinkLocale>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <Image
+            :source="getImage(galleryError.statusCode || 500)"
+            alt="error image"
+          />
+        </div>
+      </div>
+    </section>
+    <section
+      v-if="
+        !pendingGallery &&
+        galleryResponse?.items &&
+        galleryResponse?.items.length <= 0
+      "
+      class="flex flex-col justify-center items-center self-center p-8 flex-1"
+    >
+      <div class="inline-block overflow-hidden max-h-44 rounded-t-xl w-24">
+        <Image :source="Robot" alt-text="robot" />
+      </div>
+      <p class="text-center font-semibold">{{ $t("noBlogPost") }}</p>
+    </section>
     <div class="gallery__pagination">
       <Pagination
         v-slot="{ page }"
@@ -220,6 +292,11 @@ onMounted(() => {
     </div>
   </div>
 </template>
+<style scoped>
+.gallery__error {
+  @apply px-4 py-8 gap-8 content-center grid-cols-2 max-w-screen-xl mx-auto md:grid lg:px-6 lg:py-16;
+}
+</style>
 <style>
 .gallery__grid img {
   @apply !w-full !object-cover object-center;
@@ -265,7 +342,7 @@ onMounted(() => {
   max-height: 8.4rem;
 }
 .gallery__grid {
-  @apply grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4;
+  @apply grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 flex-1;
   grid-auto-rows: auto;
 }
 .gallery__grid figure {
