@@ -130,47 +130,56 @@ onMounted(() => {
     <div class="gallery__grid">
       <div
         class="max-h-96 relative group"
-        v-for="image of galleryResponse?.items"
+        v-for="(image, index) of galleryResponse?.items"
         :key="image.id"
       >
         <Image
           :source="`${runtimeConfig.public.pocketBaseFileUrl}/${image.collectionId}/${image.id}/${image.image}`"
+          :alt-text="isEn ? image.title_en : image.title_fr"
         />
-        <div
-          class="absolute inset-0 bg-black bg-opacity-75 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-        >
-          <div class="flex flex-col w-full h-full">
-            <div class="gallery__img-meta p-4">
-              <Avatar class="gallery__img-meta-avatar">
-                <AvatarImage
-                  :src="`https://api.dicebear.com/8.x/bottts-neutral/svg?seed=${image.author}`"
-                  alt="author avatar"
-                />
-                <AvatarFallback>{{
-                  image.author
-                    .match(/(^\S\S?|\s\S)?/g)
-                    ?.map((v) => v.trim())
-                    .join("")
-                    .match(/(^\S|\S$)?/g)
-                    ?.join("")
-                    .toLocaleUpperCase()
-                }}</AvatarFallback>
-              </Avatar>
-              <div class="">
-                <p class="font-semibold">
-                  {{ image.author }}
-                </p>
-                <p class="text-xs text-muted-foreground">
-                  {{ $dayjs(image.creation_date).format("LL") }}
-                </p>
+        <Dialog>
+          <DialogTrigger>
+            <div
+              class="absolute inset-0 bg-black bg-opacity-75 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+            >
+              <div class="flex flex-col w-full h-full">
+                <div class="gallery__img-meta p-4">
+                  <Avatar class="gallery__img-meta-avatar">
+                    <AvatarImage
+                      :src="`https://api.dicebear.com/8.x/bottts-neutral/svg?seed=${image.author}`"
+                      alt="author avatar"
+                    />
+                    <AvatarFallback>{{
+                      image.author
+                        .match(/(^\S\S?|\s\S)?/g)
+                        ?.map((v) => v.trim())
+                        .join("")
+                        .match(/(^\S|\S$)?/g)
+                        ?.join("")
+                        .toLocaleUpperCase()
+                    }}</AvatarFallback>
+                  </Avatar>
+                  <div class="">
+                    <p class="font-semibold">
+                      {{ image.author }}
+                    </p>
+                    <p class="text-xs text-muted-foreground">
+                      {{ $dayjs(image.creation_date).format("LL") }}
+                    </p>
+                  </div>
+                </div>
+                <div class="flex-grow"></div>
+                <div class="p-4 font-bold text-xl overlay__title">
+                  <h3>{{ isEn ? image.title_en : image.title_fr }}</h3>
+                </div>
               </div>
             </div>
-            <div class="flex-grow"></div>
-            <div class="p-4 font-bold text-xl overlay__title">
-              <h3>{{ isEn ? image.title_en : image.title_fr }}</h3>
-            </div>
-          </div>
-        </div>
+          </DialogTrigger>
+          <GalleryDialog
+            :images="galleryResponse?.items || []"
+            :selected-image="index"
+          />
+        </Dialog>
       </div>
     </div>
     <div class="gallery__pagination">
