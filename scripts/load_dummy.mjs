@@ -9,6 +9,7 @@ dotenv.config();
 const { POCKET_URL } = process.env;
 const pb = new PocketBase(POCKET_URL);
 const post_number = 200;
+const image_number = 200;
 const dummyTags = [
   {
     name_en: "Technology",
@@ -167,9 +168,11 @@ pb.autoCancellation(false);
 async function createTagAndCollection() {
   for (const tag of dummyTags) {
     await pb.collection("blog_tag").create(tag);
+    await pb.collection("image_tag").create(tag);
   }
   for (const col of dummyCollections) {
     await pb.collection("blog_collection").create(col);
+    await pb.collection("image_collection").create(col);
   }
 
   let tags = await pb.collection("blog_tag").getFullList({
@@ -182,10 +185,21 @@ async function createTagAndCollection() {
   });
   collections = collections.map((item) => item.id);
 
-  return { tags, collections };
+  let imageCollections = await pb.collection("image_collection").getFullList({
+    sort: "-created",
+  });
+  imageCollections = imageCollections.map((item) => item.id);
+
+  let imageTags = await pb.collection("image_tag").getFullList({
+    sort: "-created",
+  });
+  imageTags = imageTags.map((item) => item.id);
+
+  return { tags, collections, imageTags, imageCollections };
 }
 
-const { tags, collections } = await createTagAndCollection();
+const { tags, collections, imageTags, imageCollections } =
+  await createTagAndCollection();
 
 for (let i = 0; i <= post_number; i++) {
   let numberOfTag = Math.floor(Math.random() * tags.length);
@@ -357,5 +371,35 @@ fn main() {
     console.log(`created ${i} articles`);
   } catch (error) {
     console.error(error);
+  }
+}
+
+for (let i = 0; i <= image_number; i++) {
+  const numberOfTag = Math.floor(Math.random() * tags.length);
+  const image = {
+    title_fr: "Coucher de Soleil sur Mars",
+    creation_date: "2024-04-22 19:45:30.987Z",
+    author: "AstroPhotog",
+    visibility: true,
+    title_en: "Sunset on Mars",
+    description_fr:
+      "Une image saisissante capturant le coucher de soleil sur la planète Mars, illustrant la beauté isolée de l'espace.",
+    description_en:
+      "A striking image capturing the sunset on the planet Mars, showcasing the isolated beauty of space.",
+    image: new File([img_content], "robot.jpg"),
+    collection: _.sample(imageCollections),
+    tags: _.sampleSize(imageTags, _.random(1, numberOfTag)),
+    author: `${(+new Date() * Math.random()).toString(36).substring(0, 8)} ${(
+      +new Date() * Math.random()
+    )
+      .toString(36)
+      .substring(0, 8)}`,
+  };
+
+  try {
+    await pb.collection("image_image").create(image);
+    console.log(`created ${i} images`);
+  } catch (err) {
+    console.error(err);
   }
 }

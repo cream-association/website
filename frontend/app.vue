@@ -26,6 +26,7 @@ onMounted(() => {
     v-show="loaded"
     :data-custom-cursor="globalStore.useCustomCursor.toString()"
   >
+    <Cookies />
     <ClientOnly>
       <Cursor v-if="globalStore.useCustomCursor" />
       <Toaster :theme="colorMode.value" position="bottom-right" richColors />

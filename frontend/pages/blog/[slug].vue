@@ -260,7 +260,7 @@ watch(locale, (newLocale) => {
   @apply flex ml-16 -mt-10 xl:ml-0 xl:mt-0;
 }
 .blog__section {
-  @apply flex justify-between px-4 mx-auto max-w-screen-xl mt-16;
+  @apply flex justify-between px-4 mx-auto max-w-full md:max-w-screen-xl mt-16;
 }
 .blog__article {
   @apply mx-auto w-full text-sm sm:text-base lg:text-lg;

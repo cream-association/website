@@ -3,6 +3,7 @@ import { CaretRightIcon, MixerHorizontalIcon } from "@radix-icons/vue";
 
 import serverErrorLogo from "~/assets/images/5xx.svg";
 import notFoundLogo from "~/assets/images/4xx.svg";
+import Robot from "~/assets/images/robot.png";
 
 const runtimeConfig = useRuntimeConfig();
 const { isMobile } = useDisplay();
@@ -127,6 +128,20 @@ onMounted(() => {
     <div class="blog__content">
       <section class="blog__content-grid">
         <Card
+          class="home__blog-posts-card hoverable"
+          v-if="pendingBlogPost"
+          v-for="i in 20"
+          :key="i"
+        >
+          <Skeleton class="h-32 w-full rounded-t-xl" />
+          <CardHeader class="px-0">
+            <div class="px-4 flex flex-col gap-4">
+              <Skeleton class="h-4 w-60" />
+              <Skeleton class="h-4 w-56" />
+            </div>
+          </CardHeader>
+        </Card>
+        <Card
           class="home__blog-posts-card"
           v-for="blogPost of blogPostResponse?.items"
           :key="blogPost.id"
@@ -248,6 +263,19 @@ onMounted(() => {
             />
           </div>
         </div>
+      </section>
+      <section
+        v-if="
+          !pendingBlogPost &&
+          blogPostResponse?.items &&
+          blogPostResponse?.items.length <= 0
+        "
+        class="flex flex-col justify-center items-center self-center p-8 flex-1"
+      >
+        <div class="inline-block overflow-hidden max-h-44 rounded-t-xl w-24">
+          <Image :source="Robot" alt-text="robot" />
+        </div>
+        <p class="text-center font-semibold">{{ $t("noBlogPost") }}</p>
       </section>
     </div>
     <div class="blog__pagination">

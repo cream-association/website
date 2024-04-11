@@ -24,4 +24,11 @@ export default {
     page: "Oups ! Cette page n'existe pas.",
     links: "Voici quelques liens utiles :",
   },
+  cookies: {
+    title: "Nourissez le robot",
+    content:
+      "En acceptant les cookies, vous nous autorisez à utiliser vos données de navigation sur ce site à des fins statistiques. Les données seront envoyées et traitées par Vercel.",
+    accept: "Accepter",
+    reject: "Rejeter",
+  },
 };

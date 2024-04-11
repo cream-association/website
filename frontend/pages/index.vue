@@ -20,6 +20,15 @@ const {
   refresh: refreshBlogPost,
 } = useLazyFetch(() => "/api/home-blog");
 
+const {
+  data: galleryResponse,
+  error: galleryError,
+  pending: pendingGallery,
+  refresh: refreshGallery,
+} = useLazyFetch(() => "/api/home-gallery");
+
+const isEn = computed(() => locale.value == "en");
+
 const goToContact = (sponsor: boolean) => {
   if (sponsor) {
     navigateTo({ path: localPath("/contact"), query: { sponsor: 1 } });
@@ -121,8 +130,10 @@ onMounted(() => {
             <Card class="home__blog-posts-card hoverable">
               <Skeleton class="h-32 w-full rounded-xl" />
               <CardHeader class="px-0">
-                <Skeleton class="h-4 w-60" />
-                <Skeleton class="h-4 w-56" />
+                <div class="px-4 flex flex-col gap-4">
+                  <Skeleton class="h-4 w-60" />
+                  <Skeleton class="h-4 w-56" />
+                </div>
               </CardHeader>
             </Card>
           </SwiperSlide>
@@ -245,8 +256,134 @@ onMounted(() => {
         </Swiper>
       </ClientOnly>
     </section>
+    <section class="home__blog-posts z-10" id="blog-posts">
+      <h2 class="home__blog-posts-title">
+        {{ $t("pages.home.galleryTitle") }}
+      </h2>
+      <div class="navigation__left"></div>
+      <ClientOnly>
+        <Swiper
+          class="!pb-8 gallery__slider"
+          :slides-per-view="'auto'"
+          :centered-slides="isTabletOrMobile()"
+          :space-between="20"
+          :pagination="{ clickable: true, dynamicBullets: true }"
+          :modules="[SwiperPagination, SwiperMousewheel]"
+          :mousewheel="!isTabletOrMobile()"
+        >
+          <SwiperSlide
+            v-for="i of 10"
+            v-if="pendingGallery"
+            :key="i"
+            class="!w-auto"
+          >
+            <Card class="home__blog-posts-card hoverable">
+              <Skeleton class="h-full w-full" />
+            </Card>
+          </SwiperSlide>
+          <SwiperSlide
+            v-if="
+              !pendingGallery &&
+              galleryResponse?.items &&
+              galleryResponse?.items.length > 0
+            "
+            v-for="image in galleryResponse.items"
+            :key="image.id"
+            class="!w-auto"
+          >
+            <div
+              class="!w-72 h-72 overflow-hidden hoverable relative group flex justify-center items-center gallery__slider-slide"
+              @click="navigateTo(localPath(`/gallery/`))"
+            >
+              <Image
+                :source="`${runtimeConfig.public.pocketBaseFileUrl}/${image.collectionId}/${image.id}/${image.image}`"
+                alt-text="post header image"
+                class=""
+              />
+              <div
+                class="absolute inset-0 bg-black bg-opacity-75 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              >
+                <div class="flex flex-col w-full h-full">
+                  <div class="gallery__img-meta p-4">
+                    <Avatar class="gallery__img-meta-avatar">
+                      <AvatarImage
+                        :src="`https://api.dicebear.com/8.x/bottts-neutral/svg?seed=${image.author}`"
+                        alt="author avatar"
+                      />
+                      <AvatarFallback>{{
+                        image.author
+                          .match(/(^\S\S?|\s\S)?/g)
+                          ?.map((v) => v.trim())
+                          .join("")
+                          .match(/(^\S|\S$)?/g)
+                          ?.join("")
+                          .toLocaleUpperCase()
+                      }}</AvatarFallback>
+                    </Avatar>
+                    <div class="">
+                      <p class="font-semibold">
+                        {{ image.author }}
+                      </p>
+                      <p class="text-xs text-muted-foreground">
+                        {{ $dayjs(image.creation_date).format("LL") }}
+                      </p>
+                    </div>
+                  </div>
+                  <div class="flex-grow"></div>
+                  <div class="p-4 font-bold text-xl overlay__title">
+                    <h3>{{ isEn ? image.title_en : image.title_fr }}</h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </SwiperSlide>
+          <SwiperSlide v-if="!pendingBlogPost && blogPostError" class="!w-auto">
+            <Card
+              class="bg-destructive min-h-64 flex items-center justify-center"
+            >
+              <CardContent
+                class="flex flex-col gap-4 items-center justify-center"
+              >
+                <p class="text-center">
+                  {{ $t("fetchError") }}
+                </p>
+                <p class="text-center">
+                  {{ blogPostError.message }}
+                </p>
+              </CardContent>
+            </Card>
+          </SwiperSlide>
+          <SwiperSlide
+            v-if="!pendingBlogPost && blogPosts.length === 0 && !blogPostError"
+            class="!w-auto"
+          >
+            <Card
+              class="bg-card h-64 max-w-96 flex items-center justify-center"
+            >
+              <CardContent
+                class="flex flex-col gap-4 items-center justify-center p-6"
+              >
+                <div class="home__blog-posts-card-image w-24">
+                  <Image :source="Robot" alt-text="robot" />
+                </div>
+                <p class="text-center font-semibold">{{ $t("noBlogPost") }}</p>
+              </CardContent>
+            </Card>
+          </SwiperSlide>
+        </Swiper>
+      </ClientOnly>
+    </section>
   </div>
 </template>
+
+<style>
+.gallery__slider-slide figure {
+  @apply !w-[unset];
+}
+.swiper-pagination {
+  @apply min-h-4;
+}
+</style>
 
 <style scoped>
 .home {
