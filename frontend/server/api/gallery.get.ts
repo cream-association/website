@@ -59,7 +59,7 @@ export default defineEventHandler<Promise<GalleryResponse>>(
     const galleryImages: GalleryResponse = await pb
       .collection("image_image")
       .getList(+page, 20, {
-        filter: `visibility=true && collection~'${collection}' && title_${lang}~'${text}' ${
+        filter: `visibility=true && collection~'${collection}' && (title_${lang}~'${text}' || author~'${text}') ${
           tagFilter ? `&& ${tagFilter}` : ""
         }`,
         sort: sort as string,
