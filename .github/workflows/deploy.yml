@@ -22,4 +22,5 @@ jobs:
         run: |
           TIMESTAMP=$(date +"%Y-%m-%d_%H-%M-%S")
           LOG_FILE="deployment_${TIMESTAMP}.txt"
+          touch "/home/pixi/creamrobotics_deploy_logs/$LOG_FILE"
           ssh -o "StrictHostKeyChecking=no" -p ${{ secrets.SSH_PORT }} ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} 'bash -s' < ./scripts/deploy.sh | tee "/home/pixi/creamrobotics_deploy_logs/$LOG_FILE"
