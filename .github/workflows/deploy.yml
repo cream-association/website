@@ -3,7 +3,6 @@ name: Run Deploy Script via SSH
 on:
   push:
     branches:
-      - main
       - release
 
 jobs:
