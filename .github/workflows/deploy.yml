@@ -18,6 +18,8 @@ jobs:
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
-      - name: Execute Script on Server
+      - name: pull release branch and rebuild / restart container
         run: |
-          ssh -o "StrictHostKeyChecking=no" -p ${{ secrets.SSH_PORT }} ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} 'bash -s' < "./scripts/deploy.sh"
+          TIMESTAMP=$(date +"%Y-%m-%d_%H-%M-%S")
+          LOG_FILE="deployment_${TIMESTAMP}.txt"
+          ssh -o "StrictHostKeyChecking=no" -p ${{ secrets.SSH_PORT }} ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} 'bash -s' < ./scripts/deploy.sh | tee "/home/pixi/creamrobotics_deploy_logs/$LOG_FILE"
