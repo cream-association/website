@@ -42,8 +42,8 @@ dependencies:
     specifier: ^1.0.7
     version: 1.0.7(tailwindcss@3.4.3)
   vaul-vue:
-    specifier: ^0.1.0
-    version: 0.1.0(typescript@5.4.5)
+    specifier: ^0.1.2
+    version: 0.1.2(typescript@5.4.5)
   vue:
     specifier: ^3.4.21
     version: 3.4.26(typescript@5.4.5)
@@ -9021,8 +9021,8 @@ packages:
     engines: {node: '>= 0.8'}
     dev: true
 
-  /vaul-vue@0.1.0(typescript@5.4.5):
-    resolution: {integrity: sha512-3PYWMbN3cSdsciv3fzewskxZFnX61PYq1uNsbvizXDo/8sN4SMrWkYDqWaPdTD3GTEm6wpx7j5flRLg7A5ZXbQ==}
+  /vaul-vue@0.1.2(typescript@5.4.5):
+    resolution: {integrity: sha512-E9e0qmHXScnYXDXYuBM0xFjW5DaRcUhj9fkFlv12omd7K/RzXpM+prU+EfHS3sjtDJuy1lBdOlPPYXJeQuT/Qw==}
     dependencies:
       '@vueuse/core': 10.9.0(vue@3.4.26)
       radix-vue: 1.7.3(vue@3.4.26)
