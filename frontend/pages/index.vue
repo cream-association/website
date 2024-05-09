@@ -5,6 +5,8 @@ import { EnvelopeOpenIcon, CaretRightIcon } from "@radix-icons/vue";
 
 import Logo from "~/assets/images/logo.svg";
 import CFALogo from "~/assets/images/sponsors/cfa_insta_logo.png";
+import IDFLogo from "~/assets/images/sponsors/logo_idf.png";
+import BossmanLogo from "~/assets/images/sponsors/logo_bossman.png";
 import Robot from "~/assets/images/robot.png";
 
 const { isTabletOrMobile } = useDisplay();
@@ -362,6 +364,28 @@ onMounted(() => {
             class="grayscale brightness-50"
             :source="CFALogo"
             alt-text="CFA INSTA logo"
+          />
+        </a>
+        <a
+          class="home__sponsors-item hoverable"
+          href="https://www.iledefrance.fr/"
+          target="_blank"
+        >
+          <Image
+            class="grayscale brightness-50"
+            :source="IDFLogo"
+            alt-text="Ile De France logo"
+          />
+        </a>
+        <a
+          class="home__sponsors-item hoverable"
+          href="https://www.bossman-consultants.com/"
+          target="_blank"
+        >
+          <Image
+            class="grayscale brightness-50"
+            :source="BossmanLogo"
+            alt-text="Bossman Consultants logo"
           />
         </a>
         <NuxtLinkLocale
