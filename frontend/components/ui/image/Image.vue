@@ -27,7 +27,7 @@ const props = withDefaults(
   @apply relative w-full h-full;
 }
 .image__item {
-  @apply w-full h-full;
+  @apply w-full h-full object-contain;
 }
 .image__loading-skeleton {
   @apply absolute inset-0 z-10;
