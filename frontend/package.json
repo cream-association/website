@@ -36,7 +36,7 @@
     "@nuxtjs/seo": "2.0.0-rc.10",
     "@nuxtjs/tailwindcss": "^6.11.4",
     "@types/prismjs": "^1.26.3",
-    "@vueuse/core": "^10.9.0",
+    "@vueuse/core": "^10.11.1",
     "@vueuse/nuxt": "^10.9.0",
     "dayjs": "^1.11.10",
     "dayjs-nuxt": "^2.1.9",
