@@ -30,8 +30,8 @@ importers:
         specifier: ^2.1.7
         version: 2.1.7(typescript@5.4.5)(vue@3.4.27(typescript@5.4.5))
       pocketbase:
-        specifier: ^0.21.1
-        version: 0.21.2
+        specifier: ^0.21.4
+        version: 0.21.4
       prismjs:
         specifier: ^1.29.0
         version: 1.29.0
@@ -3597,6 +3597,7 @@ packages:
 
   nuxt-simple-robots@4.0.0-rc.16:
     resolution: {integrity: sha512-jRgDvjRrRgTAC4WOLs1dx3mHlVa5VHATgDhk8+0Mp5H4WjBipZGrZs9WOWX5Jymh17oTIESVKGHZRhaRiP+AKA==}
+    deprecated: module has been migrated to @nuxtjs/robots, see the migration guide https://nuxtseo.com/robots/releases/v4
 
   nuxt-site-config-kit@2.2.12:
     resolution: {integrity: sha512-8amzGtBzHZervHgRkKXNI3lq0E1kP73vX+373uiBI9qGBFClFayuUSTDXAJreI7Yx0vB78iAjAA3a+YKM5iIdw==}
@@ -3796,8 +3797,8 @@ packages:
     engines: {node: '>=16'}
     hasBin: true
 
-  pocketbase@0.21.2:
-    resolution: {integrity: sha512-XZdgU9dEv3TPjexDRHy5feYrZrJhWqxTki8ClFGpsnC51G3Qkwoa/U7CVG72jYcLDP3p0HiEhRUUevnlryWkHA==}
+  pocketbase@0.21.4:
+    resolution: {integrity: sha512-WJHyaqdAt95JgZ1OCRD099+DST4IIG0M/jMrCckWYDSN/6ocp61qsz7m6h0xI0J2N79ScBljceEC0fFAaQrrAw==}
 
   portfinder@1.0.32:
     resolution: {integrity: sha512-on2ZJVVDXRADWE6jnQaX0ioEylzgBpQk8r55NE4wjXW1ZxO+BgDlY6DXwj20i0V8eB4SenDQ00WEaxfiIQPcxg==}
@@ -9899,7 +9900,7 @@ snapshots:
 
   playwright-core@1.44.0: {}
 
-  pocketbase@0.21.2: {}
+  pocketbase@0.21.4: {}
 
   portfinder@1.0.32:
     dependencies:
