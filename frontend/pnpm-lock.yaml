@@ -58,8 +58,8 @@ importers:
         version: 1.1.2
     devDependencies:
       '@hypernym/nuxt-gsap':
-        specifier: ^2.4.2
-        version: 2.4.2
+        specifier: ^2.4.3
+        version: 2.4.3
       '@iconify-json/radix-icons':
         specifier: ^1.1.14
         version: 1.1.14
@@ -585,8 +585,8 @@ packages:
     resolution: {integrity: sha512-QWFZYXFE7O1Gr1dTIp+D6UcFUF0qElOnZptpi7PBUMylJh+vFmIedVe1Ir6RM1t2tEQLLSV1k7bR4o92M+uqlw==}
     engines: {node: '>=6'}
 
-  '@hypernym/nuxt-gsap@2.4.2':
-    resolution: {integrity: sha512-Oep+0ABn58PbJo4tX8A8ja2hGjjBtyFE7DJAF/q8DIDGXMFaZlTbvcreCmMdKhuJ5NR8ODE0fEObUEYci901gg==}
+  '@hypernym/nuxt-gsap@2.4.3':
+    resolution: {integrity: sha512-l3m7Z6NHWqPtz5Q7o18WKW1vOu0XVHtNZurRdE+Es5zKWdIUoHd6L5mNz440drE0bzCN7jIDicRlE5fcj30rpQ==}
 
   '@iconify-json/carbon@1.1.32':
     resolution: {integrity: sha512-9X8wVI7AmcnjTyOdDoCgyNwcFL9lb++nacDS2yLANTc27F4y9Q8pJIfUVsakR4KcGqSSBCyXwEmBDeopeTZFqA==}
@@ -5641,7 +5641,7 @@ snapshots:
     dependencies:
       '@fortawesome/fontawesome-common-types': 6.5.2
 
-  '@hypernym/nuxt-gsap@2.4.2':
+  '@hypernym/nuxt-gsap@2.4.3':
     dependencies:
       gsap: 3.12.5
 
