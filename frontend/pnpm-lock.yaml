@@ -36,8 +36,8 @@ importers:
         specifier: ^1.29.0
         version: 1.29.0
       radix-vue:
-        specifier: ^1.9.5
-        version: 1.9.5(vue@3.4.27(typescript@5.4.5))
+        specifier: ^1.9.7
+        version: 1.9.7(vue@3.4.27(typescript@5.4.5))
       tailwind-merge:
         specifier: ^2.2.2
         version: 2.3.0
@@ -46,7 +46,7 @@ importers:
         version: 1.0.7(tailwindcss@3.4.3)
       vaul-vue:
         specifier: ^0.2.0
-        version: 0.2.0(radix-vue@1.9.5(vue@3.4.27(typescript@5.4.5)))(vue@3.4.27(typescript@5.4.5))
+        version: 0.2.0(radix-vue@1.9.7(vue@3.4.27(typescript@5.4.5)))(vue@3.4.27(typescript@5.4.5))
       vue:
         specifier: ^3.4.21
         version: 3.4.27(typescript@5.4.5)
@@ -3830,8 +3830,8 @@ packages:
   queue@6.0.2:
     resolution: {integrity: sha512-iHZWu+q3IdFZFX36ro/lKBkSvfkztY5Y7HMiPlOUjhupPcG2JMfst2KKEpu5XndviX/3UhFbRngUPNKtgvtZiA==}
 
-  radix-vue@1.9.5:
-    resolution: {integrity: sha512-vtCq+WDAZj5BQtJiChGf/oC7w3y7jaod3agcntgph7fD6aqdcghLZYcUWdgT/XNJs2bEsk+3cjK3ONPRNeFcuQ==}
+  radix-vue@1.9.7:
+    resolution: {integrity: sha512-1xleWzWNFPfAMmb81gu/4/MV8dXMvc7j2EIjutBpBcKwxdJfeIcQg4k9De18L2rL1/GZg5wA9KykeKTM4MjWow==}
     peerDependencies:
       vue: '>= 3.2.0'
 
@@ -9502,7 +9502,7 @@ snapshots:
     dependencies:
       inherits: 2.0.4
 
-  radix-vue@1.9.5(vue@3.4.27(typescript@5.4.5)):
+  radix-vue@1.9.7(vue@3.4.27(typescript@5.4.5)):
     dependencies:
       '@floating-ui/dom': 1.6.10
       '@floating-ui/vue': 1.1.4(vue@3.4.27(typescript@5.4.5))
@@ -10350,10 +10350,10 @@ snapshots:
 
   vary@1.1.2: {}
 
-  vaul-vue@0.2.0(radix-vue@1.9.5(vue@3.4.27(typescript@5.4.5)))(vue@3.4.27(typescript@5.4.5)):
+  vaul-vue@0.2.0(radix-vue@1.9.7(vue@3.4.27(typescript@5.4.5)))(vue@3.4.27(typescript@5.4.5)):
     dependencies:
       '@vueuse/core': 10.11.1(vue@3.4.27(typescript@5.4.5))
-      radix-vue: 1.9.5(vue@3.4.27(typescript@5.4.5))
+      radix-vue: 1.9.7(vue@3.4.27(typescript@5.4.5))
       vue: 3.4.27(typescript@5.4.5)
     transitivePeerDependencies:
       - '@vue/composition-api'
