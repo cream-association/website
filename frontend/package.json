@@ -19,7 +19,7 @@
     "pinia": "^2.2.3",
     "pocketbase": "^0.21.4",
     "prismjs": "^1.29.0",
-    "radix-vue": "^1.9.5",
+    "radix-vue": "^1.9.10",
     "tailwind-merge": "^2.2.2",
     "tailwindcss-animate": "^1.0.7",
     "vaul-vue": "^0.2.0",
