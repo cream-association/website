@@ -30,8 +30,8 @@ importers:
         specifier: ^2.2.3
         version: 2.2.3(typescript@5.4.5)(vue@3.4.27(typescript@5.4.5))
       pocketbase:
-        specifier: ^0.21.4
-        version: 0.21.4
+        specifier: ^0.22.1
+        version: 0.22.1
       prismjs:
         specifier: ^1.29.0
         version: 1.29.0
@@ -3555,8 +3555,8 @@ packages:
     engines: {node: '>=18'}
     hasBin: true
 
-  pocketbase@0.21.4:
-    resolution: {integrity: sha512-WJHyaqdAt95JgZ1OCRD099+DST4IIG0M/jMrCckWYDSN/6ocp61qsz7m6h0xI0J2N79ScBljceEC0fFAaQrrAw==}
+  pocketbase@0.22.1:
+    resolution: {integrity: sha512-hnzpDcIx5kbkUJXz6IkiTox6R4nb706u4rPSMy2FYCaI2OqBnFxbY0qwWBSqx1ERz/Xi61Uguf17Gb9bWZ8+kw==}
 
   portfinder@1.0.32:
     resolution: {integrity: sha512-on2ZJVVDXRADWE6jnQaX0ioEylzgBpQk8r55NE4wjXW1ZxO+BgDlY6DXwj20i0V8eB4SenDQ00WEaxfiIQPcxg==}
@@ -9257,7 +9257,7 @@ snapshots:
 
   playwright-core@1.47.2: {}
 
-  pocketbase@0.21.4: {}
+  pocketbase@0.22.1: {}
 
   portfinder@1.0.32:
     dependencies:

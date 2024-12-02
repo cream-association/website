@@ -17,7 +17,7 @@
     "clsx": "^2.1.0",
     "nuxt-swiper": "^1.2.2",
     "pinia": "^2.2.3",
-    "pocketbase": "^0.21.4",
+    "pocketbase": "^0.22.1",
     "prismjs": "^1.29.0",
     "radix-vue": "^1.9.5",
     "tailwind-merge": "^2.2.2",
