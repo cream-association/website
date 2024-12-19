@@ -40,7 +40,7 @@
     "@vueuse/nuxt": "^11.0.3",
     "dayjs": "^1.11.13",
     "dayjs-nuxt": "^2.1.9",
-    "nuxt": "^3.11.2",
+    "nuxt": "^3.14.1592",
     "shadcn-nuxt": "^0.10.2",
     "typescript": "^5.4.4"
   },
