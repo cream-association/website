@@ -32,7 +32,7 @@
     "@iconify-json/radix-icons": "^1.1.14",
     "@iconify/vue": "^4.1.1",
     "@nuxtjs/color-mode": "^3.4.0",
-    "@nuxtjs/i18n": "^8.5.5",
+    "@nuxtjs/i18n": "^9.1.1",
     "@nuxtjs/seo": "2.0.0-rc.21",
     "@nuxtjs/tailwindcss": "^6.11.4",
     "@types/prismjs": "^1.26.5",
