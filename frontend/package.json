@@ -35,7 +35,7 @@
     "@nuxtjs/i18n": "^8.5.5",
     "@nuxtjs/seo": "2.0.0-rc.21",
     "@nuxtjs/tailwindcss": "^6.11.4",
-    "@types/prismjs": "^1.26.3",
+    "@types/prismjs": "^1.26.5",
     "@vueuse/core": "^11.0.3",
     "@vueuse/nuxt": "^11.0.3",
     "dayjs": "^1.11.13",

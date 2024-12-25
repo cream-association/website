@@ -79,8 +79,8 @@ importers:
         specifier: ^6.11.4
         version: 6.12.0(magicast@0.3.5)(rollup@4.28.1)(webpack-sources@3.2.3)
       '@types/prismjs':
-        specifier: ^1.26.3
-        version: 1.26.4
+        specifier: ^1.26.5
+        version: 1.26.5
       '@vueuse/core':
         specifier: ^11.0.3
         version: 11.0.3(vue@3.5.13(typescript@5.4.5))
@@ -1368,8 +1368,8 @@ packages:
   '@types/node@20.12.11':
     resolution: {integrity: sha512-vDg9PZ/zi+Nqp6boSOT7plNuthRugEKixDv5sFTIpkE89MmNtEArAShI4mxuX2+UrLEe9pxC1vm2cjm9YlWbJw==}
 
-  '@types/prismjs@1.26.4':
-    resolution: {integrity: sha512-rlAnzkW2sZOjbqZ743IHUhFcvzaGbqijwOu8QZnZCjfQzBqFE3s4lOTJEsxikImav9uzz/42I+O7YUs1mWgMlg==}
+  '@types/prismjs@1.26.5':
+    resolution: {integrity: sha512-AUZTa7hQ2KY5L7AmtSiqxlhWxb4ina0yd8hNbl4TWuqnv/pFP0nDMb3YrfSBf4hJVGLh2YEIBfKaBW/9UEl6IQ==}
 
   '@types/resolve@1.20.2':
     resolution: {integrity: sha512-60BCwRFOZCQhDncwQdxxeOEEkbc5dIMccYLwbxsS4TUNeVECQ/pBJ0j09mrHOl/JJvpRPGwO9SvE4nR2Nb/a4Q==}
@@ -6157,7 +6157,7 @@ snapshots:
     dependencies:
       undici-types: 5.26.5
 
-  '@types/prismjs@1.26.4': {}
+  '@types/prismjs@1.26.5': {}
 
   '@types/resolve@1.20.2': {}
 
