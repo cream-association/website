@@ -97,8 +97,8 @@ importers:
         specifier: ^3.14.1592
         version: 3.14.1592(@parcel/watcher@2.4.1)(@types/node@20.12.11)(encoding@0.1.13)(eslint@9.17.0(jiti@2.4.2))(ioredis@5.4.1)(magicast@0.3.5)(optionator@0.9.4)(rollup@4.28.1)(sass@1.77.0)(terser@5.31.0)(typescript@5.7.2)(vite@5.4.11(@types/node@20.12.11)(sass@1.77.0)(terser@5.31.0))
       shadcn-nuxt:
-        specifier: ^0.10.2
-        version: 0.10.4(magicast@0.3.5)(rollup@4.28.1)
+        specifier: ^0.11.3
+        version: 0.11.3(magicast@0.3.5)(rollup@4.28.1)
       typescript:
         specifier: ^5.7.2
         version: 5.7.2
@@ -823,12 +823,12 @@ packages:
     resolution: {integrity: sha512-bmsP4L2HqBF6i6uaMqJMcFBONVjKt+siGluRq4Ca4C0q7W2eMaVZr8iCgF9dKbcVXutftkC7D6z2SaSMmLiDyA==}
     engines: {node: '>= 16'}
 
-  '@intlify/shared@11.0.0':
-    resolution: {integrity: sha512-MLKIyFz37qYF1G5UQZMwGoJyp8DD3rtcXDplRHZdSOmbfOYbD4g9kJZ6qCsm1Ru3vee6CTnJcbO4LV1JeIDGbA==}
-    engines: {node: '>= 16'}
-
   '@intlify/shared@11.0.0-rc.1':
     resolution: {integrity: sha512-8tR1xe7ZEbkabTuE/tNhzpolygUn9OaYp9yuYAF4MgDNZg06C3Qny80bes2/e9/Wm3aVkPUlCw6WgU7mQd0yEg==}
+    engines: {node: '>= 16'}
+
+  '@intlify/shared@11.0.1':
+    resolution: {integrity: sha512-lH164+aDDptHZ3dBDbIhRa1dOPQUp+83iugpc+1upTOWCnwyC1PVis6rSWNMMJ8VQxvtHQB9JMib48K55y0PvQ==}
     engines: {node: '>= 16'}
 
   '@intlify/unplugin-vue-i18n@6.0.2':
@@ -1027,8 +1027,8 @@ packages:
   '@nuxtjs/tailwindcss@6.12.0':
     resolution: {integrity: sha512-vXvEq8z177TQcx0tc10mw3O6T9WeN0iTL8hIKGDfidmr+HKReexJU01aPgHefFrCu4LJB70egYFYnywzB9lMyQ==}
 
-  '@oxc-parser/wasm@0.1.0':
-    resolution: {integrity: sha512-oA7XhTbg9rRBJhIzxCNhJwYmON/9LFAH4GBQxl7HWmGSS6HTrb2t6Peq82nxY0W7knguH52neh9T7zs27FVvsQ==}
+  '@oxc-parser/wasm@0.29.0':
+    resolution: {integrity: sha512-Ks5yFtJHypJZUdSNLImwtfkDt0/8ll9CDPyfmldhudtKB/1o6F/WQGWA4Oo+bCskDIp2MPKc3HfHccN3ALhtSg==}
 
   '@parcel/watcher-android-arm64@2.4.1':
     resolution: {integrity: sha512-LOi/WTbbh3aTn2RYddrO8pnapixAziFl6SMxHM69r3tvdSm94JtCenaKgk1GRg5FJ5wpMCpHeW+7yqPlvZv7kg==}
@@ -4048,8 +4048,8 @@ packages:
   setprototypeof@1.2.0:
     resolution: {integrity: sha512-E5LDX7Wrp85Kil5bhZv46j8jOeboKq5JMmYM3gVGdGH8xFpPWXUMsNrlODCrkoxMEeNi/XZIwuRvY4XNwYMJpw==}
 
-  shadcn-nuxt@0.10.4:
-    resolution: {integrity: sha512-WhSGzjaSMi1D2xb9Aflpwl8G8Qvlb0g4OuJLPO4YyRhduQDuscU6Pr1HdF7T4700foLLglgFnz7m8E2DDLLHJA==}
+  shadcn-nuxt@0.11.3:
+    resolution: {integrity: sha512-Q0OxqTEbTmtbm/4wV9jd/7DTQYn65AGHkVJZjjHQdHGHTHCwhAbZ2jlCPnMuzJ8kgSsJyXFGNcImAphDCjjV5w==}
 
   shebang-command@2.0.0:
     resolution: {integrity: sha512-kHxr2zZpYtdmrN1qDjrrX/Z1rR1kG8Dx+gkpK1G4eXmvXswmcE1hTWBWYUzlraYw1/yZp6YuDY77YtvbN0dmDA==}
@@ -5475,16 +5475,16 @@ snapshots:
 
   '@intlify/shared@10.0.5': {}
 
-  '@intlify/shared@11.0.0': {}
-
   '@intlify/shared@11.0.0-rc.1': {}
+
+  '@intlify/shared@11.0.1': {}
 
   '@intlify/unplugin-vue-i18n@6.0.2(@vue/compiler-dom@3.5.13)(eslint@9.17.0(jiti@2.4.2))(rollup@4.28.1)(typescript@5.7.2)(vue-i18n@10.0.5(vue@3.5.13(typescript@5.7.2)))(vue@3.5.13(typescript@5.7.2))':
     dependencies:
       '@eslint-community/eslint-utils': 4.4.1(eslint@9.17.0(jiti@2.4.2))
       '@intlify/bundle-utils': 10.0.0(vue-i18n@10.0.5(vue@3.5.13(typescript@5.7.2)))
-      '@intlify/shared': 11.0.0
-      '@intlify/vue-i18n-extensions': 7.0.0(@intlify/shared@11.0.0)(@vue/compiler-dom@3.5.13)(vue-i18n@10.0.5(vue@3.5.13(typescript@5.7.2)))(vue@3.5.13(typescript@5.7.2))
+      '@intlify/shared': 11.0.1
+      '@intlify/vue-i18n-extensions': 7.0.0(@intlify/shared@11.0.1)(@vue/compiler-dom@3.5.13)(vue-i18n@10.0.5(vue@3.5.13(typescript@5.7.2)))(vue@3.5.13(typescript@5.7.2))
       '@rollup/pluginutils': 5.1.4(rollup@4.28.1)
       '@typescript-eslint/scope-manager': 8.18.2
       '@typescript-eslint/typescript-estree': 8.18.2(typescript@5.7.2)
@@ -5508,11 +5508,11 @@ snapshots:
 
   '@intlify/utils@0.13.0': {}
 
-  '@intlify/vue-i18n-extensions@7.0.0(@intlify/shared@11.0.0)(@vue/compiler-dom@3.5.13)(vue-i18n@10.0.5(vue@3.5.13(typescript@5.7.2)))(vue@3.5.13(typescript@5.7.2))':
+  '@intlify/vue-i18n-extensions@7.0.0(@intlify/shared@11.0.1)(@vue/compiler-dom@3.5.13)(vue-i18n@10.0.5(vue@3.5.13(typescript@5.7.2)))(vue@3.5.13(typescript@5.7.2))':
     dependencies:
       '@babel/parser': 7.26.3
     optionalDependencies:
-      '@intlify/shared': 11.0.0
+      '@intlify/shared': 11.0.1
       '@vue/compiler-dom': 3.5.13
       vue: 3.5.13(typescript@5.7.2)
       vue-i18n: 10.0.5(vue@3.5.13(typescript@5.7.2))
@@ -6072,7 +6072,7 @@ snapshots:
       - ts-node
       - uWebSockets.js
 
-  '@oxc-parser/wasm@0.1.0': {}
+  '@oxc-parser/wasm@0.29.0': {}
 
   '@parcel/watcher-android-arm64@2.4.1':
     optional: true
@@ -9536,10 +9536,11 @@ snapshots:
 
   setprototypeof@1.2.0: {}
 
-  shadcn-nuxt@0.10.4(magicast@0.3.5)(rollup@4.28.1):
+  shadcn-nuxt@0.11.3(magicast@0.3.5)(rollup@4.28.1):
     dependencies:
-      '@nuxt/kit': 3.11.2(magicast@0.3.5)(rollup@4.28.1)
-      '@oxc-parser/wasm': 0.1.0
+      '@nuxt/kit': 3.14.1592(magicast@0.3.5)(rollup@4.28.1)
+      '@oxc-parser/wasm': 0.29.0
+      typescript: 5.7.2
     transitivePeerDependencies:
       - magicast
       - rollup
