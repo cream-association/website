@@ -61,8 +61,8 @@ importers:
         specifier: ^2.4.3
         version: 2.4.3
       '@iconify-json/radix-icons':
-        specifier: ^1.1.14
-        version: 1.1.14
+        specifier: ^1.2.2
+        version: 1.2.2
       '@iconify/vue':
         specifier: ^4.1.1
         version: 4.1.2(vue@3.5.13(typescript@5.7.2))
@@ -774,8 +774,8 @@ packages:
   '@hypernym/nuxt-gsap@2.4.3':
     resolution: {integrity: sha512-l3m7Z6NHWqPtz5Q7o18WKW1vOu0XVHtNZurRdE+Es5zKWdIUoHd6L5mNz440drE0bzCN7jIDicRlE5fcj30rpQ==}
 
-  '@iconify-json/radix-icons@1.1.14':
-    resolution: {integrity: sha512-AYBOyhnJ2hXlg3aIn8Ekphrr7zHRyz1l8x6bidM3PDUuTL+aRt8r6cpCvN3GeuTHy2JOhmihbVJRF0bt2FF7Ag==}
+  '@iconify-json/radix-icons@1.2.2':
+    resolution: {integrity: sha512-+PPmKWDP7pfJMcEc9Ty1zyo/zzq+9rfKW4EGb2HSZcPu1VUhothDLFzWvBqQNoFIOYCJ2nm0Vmf8kVyYhq9G0Q==}
 
   '@iconify/types@2.0.0':
     resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
@@ -5575,7 +5575,7 @@ snapshots:
     dependencies:
       gsap: 3.12.5
 
-  '@iconify-json/radix-icons@1.1.14':
+  '@iconify-json/radix-icons@1.2.2':
     dependencies:
       '@iconify/types': 2.0.0
 
