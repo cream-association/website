@@ -1,9 +1,11 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
+
   typescript: {
     strict: true,
   },
+
   modules: [
     "@nuxtjs/tailwindcss",
     "shadcn-nuxt",
@@ -16,35 +18,44 @@ export default defineNuxtConfig({
     "nuxt-swiper",
     "dayjs-nuxt",
   ],
+
   build: { transpile: ["vue-sonner"] },
+
   runtimeConfig: {
     public: {
       pocketBaseUrl: "",
       pocketBaseFileUrl: "",
     },
   },
+
   pinia: {
     storesDirs: ["./stores/**"],
   },
+
   dayjs: {
     locales: ["en", "fr"],
     defaultLocale: "fr",
     plugins: ["localizedFormat"],
   },
+
   gsap: {
     composables: true,
   },
+
   shadcn: {
     prefix: "",
     componentDir: "./components/ui",
   },
+
   colorMode: {
     classSuffix: "",
     storageKey: "theme",
     preference: "system",
     fallback: "dark",
   },
+
   i18n: {
+    restructureDir: false,
     skipSettingLocaleOnNavigate: true,
     defaultLocale: "fr",
     locales: [
@@ -64,7 +75,10 @@ export default defineNuxtConfig({
     lazy: true,
     langDir: "./assets/locales",
   },
+
   site: {
     url: "",
   },
+
+  compatibilityDate: "2025-03-21",
 });
