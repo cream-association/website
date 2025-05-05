@@ -30,8 +30,8 @@ importers:
         specifier: ^3.0.1
         version: 3.0.1(typescript@5.8.3)(vue@3.5.13(typescript@5.8.3))
       pocketbase:
-        specifier: ^0.25.2
-        version: 0.25.2
+        specifier: ^0.26.0
+        version: 0.26.0
       prismjs:
         specifier: ^1.30.0
         version: 1.30.0
@@ -564,6 +564,12 @@ packages:
     peerDependencies:
       eslint: ^6.0.0 || ^7.0.0 || >=8.0.0
 
+  '@eslint-community/eslint-utils@4.7.0':
+    resolution: {integrity: sha512-dyybb3AcajC7uha6CvhdVRJqaKyn7w2YKqKyAN37NKYgZT36w+iRb0Dymmc5qEJ549c/S31cMMSFd75bteCpCw==}
+    engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
+    peerDependencies:
+      eslint: ^6.0.0 || ^7.0.0 || >=8.0.0
+
   '@eslint-community/regexpp@4.12.1':
     resolution: {integrity: sha512-CCZCDJuduB9OUkFkY2IgppNZMi2lBQgD2qzwXkEia16cge2pijY/aXi96CJMquDMn3nJdlPV1A5KrJEXwfLNzQ==}
     engines: {node: ^12.0.0 || ^14.0.0 || >=16.0.0}
@@ -606,8 +612,14 @@ packages:
   '@floating-ui/core@1.6.9':
     resolution: {integrity: sha512-uMXCuQ3BItDUbAMhIXw7UPXRfAlOAvZzdK9BWpE60MCn+Svt3aLn9jsPTi/WNGlRUu2uI0v5S7JiIUsbsvh3fw==}
 
+  '@floating-ui/core@1.7.0':
+    resolution: {integrity: sha512-FRdBLykrPPA6P76GGGqlex/e7fbe0F1ykgxHYNXQsH/iTEtjMj/f9bpY5oQqbjt5VgZvgz/uKXbGuROijh3VLA==}
+
   '@floating-ui/dom@1.6.13':
     resolution: {integrity: sha512-umqzocjDgNRGTuO7Q8CU32dkHkECqI8ZdMZ5Swb6QAM0t5rnlrN3lGo1hdpscRd3WS8T6DKYK4ephgIH9iRh3w==}
+
+  '@floating-ui/dom@1.7.0':
+    resolution: {integrity: sha512-lGTor4VlXcesUMh1cupTUTDoCxMb0V6bm3CnxHzQcw8Eaf1jQbgQX4i02fYgT0vJ82tb5MZ4CZk1LRGkktJCzg==}
 
   '@floating-ui/utils@0.2.9':
     resolution: {integrity: sha512-MDWhGtE+eHw5JW7lq4qhc5yRLS11ERl1c7Z6Xd0a58DozHES6EnNNwUWbMiG4J9Cgj053Bhk8zvlhFYKVhULwg==}
@@ -1038,9 +1050,11 @@ packages:
 
   '@oxc-parser/wasm@0.50.0':
     resolution: {integrity: sha512-be/QsKqtXQbKhnIRzezPrV385L6EVaX1GNAGeaQaT+HX6Lny/SfmFetCrEZCRqn2/cAqo+P5rGDNJzv06dY/vw==}
+    deprecated: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
 
   '@oxc-parser/wasm@0.60.0':
     resolution: {integrity: sha512-Dkf9/D87WGBCW3L0+1DtpAfL4SrNsgeRvxwjpKCtbH7Kf6K+pxrT0IridaJfmWKu1Ml+fDvj+7HEyBcfUC/TXQ==}
+    deprecated: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
 
   '@oxc-project/types@0.50.0':
     resolution: {integrity: sha512-VGV87PmDCGv1D+57iEmIuDoso3ig8d8D4VIK9AS0H7h2aNiRwFoCpVyp01+3jvIuHjPcEM2wbo3NG5EKyfx6Jw==}
@@ -1463,16 +1477,16 @@ packages:
   '@tanstack/virtual-core@3.13.4':
     resolution: {integrity: sha512-fNGO9fjjSLns87tlcto106enQQLycCKR4DPNpgq3djP5IdcPFdPAmaKjsgzIeRhH7hWrELgW12hYnRthS5kLUw==}
 
-  '@tanstack/virtual-core@3.13.6':
-    resolution: {integrity: sha512-cnQUeWnhNP8tJ4WsGcYiX24Gjkc9ALstLbHcBj1t3E7EimN6n6kHH+DPV4PpDnuw00NApQp+ViojMj1GRdwYQg==}
+  '@tanstack/virtual-core@3.13.8':
+    resolution: {integrity: sha512-BT6w89Hqy7YKaWewYzmecXQzcJh6HTBbKYJIIkMaNU49DZ06LoTV3z32DWWEdUsgW6n1xTmwTLs4GtWrZC261w==}
 
   '@tanstack/vue-virtual@3.13.4':
     resolution: {integrity: sha512-1fPrd3hE1SS4R/9JbX1AlzueY4duCK7ixuLcMW5GMnk9N6WbLo9MioNKiv22V+UaXKOLNy8tLdzT8NYerOFTOQ==}
     peerDependencies:
       vue: ^2.7.0 || ^3.0.0
 
-  '@tanstack/vue-virtual@3.13.6':
-    resolution: {integrity: sha512-GYdZ3SJBQPzgxhuCE2fvpiH46qzHiVx5XzBSdtESgiqh4poj8UgckjGWYEhxaBbcVt1oLzh1m3Ql4TyH32TOzQ==}
+  '@tanstack/vue-virtual@3.13.8':
+    resolution: {integrity: sha512-CqyjKVc88YlE8JPth8a5Gi4CUoYrwJ2PZxtFbhoekx8Z2qqymxX2jzkbUMKFsX4EVNET90D5bLsG3epyozbzcg==}
     peerDependencies:
       vue: ^2.7.0 || ^3.0.0
 
@@ -3905,8 +3919,8 @@ packages:
     engines: {node: '>=18'}
     hasBin: true
 
-  pocketbase@0.25.2:
-    resolution: {integrity: sha512-ONZl1+qHJMnhR2uacBlBJ90lm7njtL/zy0606+1ROfK9hSL4LRBRc8r89rMcNRzPzRqCNyoFTh2Qg/lYXdEC1w==}
+  pocketbase@0.26.0:
+    resolution: {integrity: sha512-WBBeOgz4Jnrd7a1KEzSBUJqpTortKKCcp16j5KoF+4tNIyQHsmynj+qRSvS56/RVacVMbAqO8Qkfj3N84fpzEw==}
 
   portfinder@1.0.35:
     resolution: {integrity: sha512-73JaFg4NwYNAufDtS5FsFu/PdM49ahJrO1i44aCRsDWju1z5wuGDaqyFUQWR6aJoK2JPDWlaYYAGFNIGTSUHSw==}
@@ -5577,6 +5591,11 @@ snapshots:
       eslint: 9.22.0(jiti@2.4.2)
       eslint-visitor-keys: 3.4.3
 
+  '@eslint-community/eslint-utils@4.7.0(eslint@9.22.0(jiti@2.4.2))':
+    dependencies:
+      eslint: 9.22.0(jiti@2.4.2)
+      eslint-visitor-keys: 3.4.3
+
   '@eslint-community/regexpp@4.12.1': {}
 
   '@eslint/config-array@0.19.2':
@@ -5626,9 +5645,18 @@ snapshots:
     dependencies:
       '@floating-ui/utils': 0.2.9
 
+  '@floating-ui/core@1.7.0':
+    dependencies:
+      '@floating-ui/utils': 0.2.9
+
   '@floating-ui/dom@1.6.13':
     dependencies:
       '@floating-ui/core': 1.6.9
+      '@floating-ui/utils': 0.2.9
+
+  '@floating-ui/dom@1.7.0':
+    dependencies:
+      '@floating-ui/core': 1.7.0
       '@floating-ui/utils': 0.2.9
 
   '@floating-ui/utils@0.2.9': {}
@@ -6733,16 +6761,16 @@ snapshots:
 
   '@tanstack/virtual-core@3.13.4': {}
 
-  '@tanstack/virtual-core@3.13.6': {}
+  '@tanstack/virtual-core@3.13.8': {}
 
   '@tanstack/vue-virtual@3.13.4(vue@3.5.13(typescript@5.8.3))':
     dependencies:
       '@tanstack/virtual-core': 3.13.4
       vue: 3.5.13(typescript@5.8.3)
 
-  '@tanstack/vue-virtual@3.13.6(vue@3.5.13(typescript@5.8.3))':
+  '@tanstack/vue-virtual@3.13.8(vue@3.5.13(typescript@5.8.3))':
     dependencies:
-      '@tanstack/virtual-core': 3.13.6
+      '@tanstack/virtual-core': 3.13.8
       vue: 3.5.13(typescript@5.8.3)
 
   '@trysound/sax@0.2.0': {}
@@ -7966,7 +7994,7 @@ snapshots:
 
   eslint@9.22.0(jiti@2.4.2):
     dependencies:
-      '@eslint-community/eslint-utils': 4.6.1(eslint@9.22.0(jiti@2.4.2))
+      '@eslint-community/eslint-utils': 4.7.0(eslint@9.22.0(jiti@2.4.2))
       '@eslint-community/regexpp': 4.12.1
       '@eslint/config-array': 0.19.2
       '@eslint/config-helpers': 0.1.0
@@ -9629,7 +9657,7 @@ snapshots:
 
   playwright-core@1.51.1: {}
 
-  pocketbase@0.25.2: {}
+  pocketbase@0.26.0: {}
 
   portfinder@1.0.35:
     dependencies:
@@ -9988,11 +10016,11 @@ snapshots:
 
   reka-ui@2.1.0(typescript@5.8.3)(vue@3.5.13(typescript@5.8.3)):
     dependencies:
-      '@floating-ui/dom': 1.6.13
+      '@floating-ui/dom': 1.7.0
       '@floating-ui/vue': 1.1.6(vue@3.5.13(typescript@5.8.3))
       '@internationalized/date': 3.8.0
       '@internationalized/number': 3.6.1
-      '@tanstack/vue-virtual': 3.13.6(vue@3.5.13(typescript@5.8.3))
+      '@tanstack/vue-virtual': 3.13.8(vue@3.5.13(typescript@5.8.3))
       '@vueuse/core': 12.8.2(typescript@5.8.3)
       '@vueuse/shared': 12.8.2(typescript@5.8.3)
       aria-hidden: 1.2.4
